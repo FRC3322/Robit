@@ -243,7 +243,7 @@ Children:
           default: '1'
           name: Forward Channel (Solenoid)
           validators: *id014
-          value: '5'
+          value: '3'
         Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: '1'
@@ -261,7 +261,7 @@ Children:
           default: '1'
           name: Reverse Channel (Solenoid)
           validators: *id020
-          value: '6'
+          value: '4'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -279,15 +279,21 @@ Children:
           validators: *id002
           value: '6'
     - Name: FeedMotor
-      Base: CAN Jaguar
+      Base: Spike
       Children: []
       Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '7'
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2']
+          default: '1'
+          name: Output Module (Digital)
+          validators: [RelayOutput]
+          value: '1'
+        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8']
+          default: '1'
+          name: Output Channel (Relay)
+          validators: [RelayOutput]
+          value: '2'
     - Name: FrisbeeDirection
       Base: Analog Input
       Children: []
@@ -313,25 +319,25 @@ Children:
           default: '1'
           name: Forward Channel (Solenoid)
           validators: *id014
-          value: '3'
+          value: '5'
         Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: '1'
           name: Forward Module (Solenoid)
           validators: *id016
-          value: '2'
+          value: '1'
         Reverse Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id017
           default: '1'
           name: Reverse Module (Solenoid)
           validators: *id018
-          value: '2'
+          value: '1'
         Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
           name: Reverse Channel (Solenoid)
           validators: *id020
-          value: '4'
+          value: '6'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -357,25 +363,25 @@ Children:
           default: '1'
           name: Forward Channel (Solenoid)
           validators: *id014
-          value: '1'
+          value: '7'
         Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: '1'
           name: Forward Module (Solenoid)
           validators: *id016
-          value: '2'
+          value: '1'
         Reverse Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id017
           default: '1'
           name: Reverse Module (Solenoid)
           validators: *id018
-          value: '2'
+          value: '1'
         Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: '1'
           name: Reverse Channel (Solenoid)
           validators: *id020
-          value: '2'
+          value: '8'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
