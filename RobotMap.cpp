@@ -54,6 +54,8 @@ void RobotMap::init() {
         drivetrainDrive->SetExpiration(0.1);
         drivetrainDrive->SetSensitivity(0.5);
         drivetrainDrive->SetMaxOutput(1.0);
+        drivetrainDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+        drivetrainDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	drivetrainShiftGear = new DoubleSolenoid(1, 1, 2);      
 	
 	
