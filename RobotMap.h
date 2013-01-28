@@ -30,7 +30,7 @@ public:
 	static Servo* climberSafetyMotor;
 	static DoubleSolenoid* climberEngageClaw;
 	static CANJaguar* shooterMainMotor;
-	static Relay* shooterFeedMotor;
+	static CANJaguar* shooterFeedMotor;
 	static AnalogChannel* shooterFrisbeeDirection;
 	static DoubleSolenoid* shooterDeploy;
 	static CANJaguar* gathererMotor;

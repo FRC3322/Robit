@@ -21,7 +21,7 @@ Encoder* RobotMap::drivetrainRightEncoder = NULL;
 Servo* RobotMap::climberSafetyMotor = NULL;
 DoubleSolenoid* RobotMap::climberEngageClaw = NULL;
 CANJaguar* RobotMap::shooterMainMotor = NULL;
-Relay* RobotMap::shooterFeedMotor = NULL;
+CANJaguar* RobotMap::shooterFeedMotor = NULL;
 AnalogChannel* RobotMap::shooterFrisbeeDirection = NULL;
 DoubleSolenoid* RobotMap::shooterDeploy = NULL;
 CANJaguar* RobotMap::gathererMotor = NULL;
@@ -78,8 +78,8 @@ void RobotMap::init() {
 	shooterMainMotor = new CANJaguar(6);
 	
 	
-	shooterFeedMotor = new Relay(1, 2);
-	lw->AddActuator("Shooter", "FeedMotor", shooterFeedMotor);
+	shooterFeedMotor = new CANJaguar(7);
+	
 	
 	shooterFrisbeeDirection = new AnalogChannel(1, 3);
 	lw->AddSensor("Shooter", "FrisbeeDirection", shooterFrisbeeDirection);
