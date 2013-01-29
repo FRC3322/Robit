@@ -32,3 +32,9 @@ void Drivetrain::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+void Drivetrain::ShiftIntoLowGear() {
+	shiftGear->Set(DoubleSolenoid::kForward);
+}
+void Drivetrain::ShiftIntoHighGear() {
+	shiftGear->Set(DoubleSolenoid::kReverse);
+}
