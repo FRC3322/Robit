@@ -22,7 +22,7 @@ void TelOpDrive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TelOpDrive::Execute() {
 	Joystick *stick = Robot::oi->getDriveStick();
-	Robot::drivetrain->drive->ArcadeDrive(stick, Joystick::kDefaultXAxis, stick, Joystick::kDefaultYAxis);
+	Robot::drivetrain->drive->ArcadeDrive(stick, Joystick::kDefaultTwistAxis, stick, Joystick::kDefaultYAxis);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool TelOpDrive::IsFinished() {
