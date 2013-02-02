@@ -51,7 +51,7 @@ void RobotMap::init() {
               drivetrainRightMotorA, drivetrainRightMotorB);
 	
 	drivetrainDrive->SetSafetyEnabled(true);
-        drivetrainDrive->SetExpiration(0.1);
+        drivetrainDrive->SetExpiration(0.5);
         drivetrainDrive->SetSensitivity(0.5);
         drivetrainDrive->SetMaxOutput(1.0);
 	drivetrainShiftGear = new DoubleSolenoid(1, 1, 2);      
