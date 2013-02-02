@@ -54,8 +54,6 @@ void RobotMap::init() {
         drivetrainDrive->SetExpiration(0.1);
         drivetrainDrive->SetSensitivity(0.5);
         drivetrainDrive->SetMaxOutput(1.0);
-        drivetrainDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
-        drivetrainDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	drivetrainShiftGear = new DoubleSolenoid(1, 1, 2);      
 	
 	
@@ -105,7 +103,7 @@ void RobotMap::init() {
         supportAccel->SetZero(2.5);
 	supportGyro = new Gyro(1, 1);
 	lw->AddSensor("Support", "Gyro", supportGyro);
-	supportGyro->SetSensitivity(1.25);
+	supportGyro->SetSensitivity(0.007);
 	supportCompressor = new Compressor(1, 5, 1, 1);
 	
 	
