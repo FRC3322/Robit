@@ -445,7 +445,7 @@ Children:
       Children: []
       Properties:
         Sensitivity: !!robotbuilder.data.properties.DoubleProperty {default: 1.25,
-          name: Sensitivity, validators: null, value: 0.007}
+          name: Sensitivity, validators: null, value: 0.0070}
         Input Module (Analog): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
@@ -603,6 +603,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: DriveForwardWithGyro
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}
 Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
@@ -622,6 +630,6 @@ Properties:
     validators: null, value: 3322}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Ken
-      Fox\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
-    validators: null, value: 'C:\Users\Ken Fox\NetBeansProjects'}
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\John\NetBeansProjects',
+    extension: null, folder: true, name: Java Project Directory, validators: null,
+    value: 'C:\Users\Ken Fox\NetBeansProjects'}

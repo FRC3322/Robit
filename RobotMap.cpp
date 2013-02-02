@@ -103,7 +103,7 @@ void RobotMap::init() {
         supportAccel->SetZero(2.5);
 	supportGyro = new Gyro(1, 1);
 	lw->AddSensor("Support", "Gyro", supportGyro);
-	supportGyro->SetSensitivity(0.007);
+	supportGyro->SetSensitivity(0.0070);
 	supportCompressor = new Compressor(1, 5, 1, 1);
 	
 	
