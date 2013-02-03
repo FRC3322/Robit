@@ -131,25 +131,28 @@ void Robot::TeleopInit() {
 	}
 	teleopLastStartTime = startTime;
 }
-#define COLLECT_TIMING 1
+#define COLLECT_DIAGNOSTICS 1
 void Robot::TeleopPeriodic() {
-#ifdef COLLECT_TIMING
+	Robot::support->perfTimer->Set(1);
+#ifdef COLLECT_DIAGNOSTICS
 	double startTime = Timer::GetPPCTimestamp();
 #endif
-	Robot::support->perfTimer->Set(1);
 	double gyroAngle = Robot::support->gyro->GetAngle();
 	SmartDashboard::PutNumber("gyro", gyroAngle);
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
 	Robot::support->perfTimer->Set(0);
-#ifdef COLLECT_TIMING
+#ifdef COLLECT_DIAGNOSTICS
 	double endTime = Timer::GetPPCTimestamp();
+	Robot::support->diagTimer->Set(1);
 	if (log) {
 		fprintf(log, "%.8f,%.8f,%.8f,T,%.2f\n",
 				startTime, startTime-teleopLastStartTime, endTime-startTime,
 				gyroAngle);
+		fflush(log);
 	}
 	teleopLastStartTime = startTime;
+	Robot::support->diagTimer->Set(0);
 #endif
 }
 void Robot::TestInit() {

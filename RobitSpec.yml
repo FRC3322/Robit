@@ -452,7 +452,7 @@ Children:
           default: '1'
           name: Output Channel (Digital)
           validators: *id028
-          value: '6'
+          value: '12'
     - Name: Accel
       Base: Accelerometer
       Children: []

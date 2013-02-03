@@ -102,7 +102,7 @@ void RobotMap::init() {
 	supportPerfTimer = new DigitalOutput(1, 11);
 	
 	
-	supportDiagTimer = new DigitalOutput(1, 6);
+	supportDiagTimer = new DigitalOutput(1, 12);
 	
 	
 	supportAccel = new Accelerometer(1, 2);
