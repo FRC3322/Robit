@@ -54,69 +54,63 @@ void Robot::DisabledInit() {
 void Robot::DisabledPeriodic() {
 }
 
+// taskPrioritySet(tid, 0) ---> taskPrioritySet(tid, priority)
+// taskLock() ---> taskUnlock()
+
+#define RUN_TIMER_TEST(F) \
+elapsed = last = Timer::GetPPCTimestamp(); \
+for (j = 0; j < NumInnerIters; ++j) { \
+	now = F(); \
+	dt = now - last; \
+	if (j > 0) { \
+		if (dt > max_dt) max_dt = dt; \
+		if (dt < min_dt) min_dt = dt; \
+	} \
+	else { \
+		max_dt = 0.0; \
+		min_dt = 1.0; \
+	} \
+	last = now; \
+} \
+elapsed = Timer::GetPPCTimestamp() - elapsed; \
+avg_dt = elapsed / NumInnerIters;
+
 void Robot::AutonomousInit() {
 	if (log) {
 		fclose(log);
 	}
-	log = 0;
 #if 0
 	if (0 != (log = fopen("/3322-timing.txt", "w"))) {
-		const int numIterations = 100000;
 		fprintf(log, "TIMING TEST\n");
-		double startFPGA = Timer::GetFPGATimestamp();
-		double start = Timer::GetPPCTimestamp();
-		double last = Timer::GetFPGATimestamp();
-		double max = 0.0;
-		for (int i = 0; i < numIterations; ++i) {
-			double now = Timer::GetFPGATimestamp();
-			double dt = now - last;
-			if (dt > max) {
-				max = dt;
-			}
-			last = now;
+
+		const int NumOuterIters = 10;
+		const int NumInnerIters = 1000;
+		int i, j;
+		double elapsed, now, last, dt, min_dt, max_dt, avg_dt;
+		int tid, priority;
+
+		tid = taskIdSelf();
+		taskPriorityGet(tid, &priority);
+
+		for (i = 0; i < NumOuterIters; ++i) {
+			RUN_TIMER_TEST(Timer::GetFPGATimestamp)
+			fprintf(log, "FPGA,%.8f,%.8f,%.8f\n", avg_dt, min_dt, max_dt);
 		}
-		double stop = Timer::GetPPCTimestamp();
-		double stopFPGA = Timer::GetFPGATimestamp();
-		fprintf(log, "FPGA Clock start=%.8f\n", last);
-		fprintf(log, "elapsed=%.8f (%.8f) each=%.8f max dt=%.8f\n",
-				stop - start, stopFPGA - startFPGA, (stop - start) / (numIterations + 1), max);
-		startFPGA = Timer::GetFPGATimestamp();
-		start = Timer::GetPPCTimestamp();
-		last = Timer::GetPPCTimestamp();
-		max = 0.0;
-		for (int i = 0; i < numIterations; ++i) {
-			double now = Timer::GetPPCTimestamp();
-			double dt = now - last;
-			if (dt > max) {
-				max = dt;
-			}
-			last = now;
+
+		for (i = 0; i < NumOuterIters; ++i) {
+			RUN_TIMER_TEST(::GetTime)
+			fprintf(log, "GetTime,%.8f,%.8f,%.8f\n", avg_dt, min_dt, max_dt);
 		}
-		stop = Timer::GetPPCTimestamp();
-		stopFPGA = Timer::GetFPGATimestamp();
-		fprintf(log, "PPC Clock example=%.8f\n", last);
-		fprintf(log, "elapsed=%.8f (%.8f) each=%.8f max dt=%.8f\n",
-				stop - start, stopFPGA - startFPGA, (stop - start) / (numIterations + 1), max);
-		startFPGA = Timer::GetFPGATimestamp();
-		start = Timer::GetPPCTimestamp();
-		last = ::GetTime();
-		max = 0.0;
-		for (int i = 0; i < numIterations; ++i) {
-			double now = ::GetTime();
-			double dt = now - last;
-			if (dt > max) {
-				max = dt;
-			}
-			last = now;
+
+		for (i = 0; i < NumOuterIters; ++i) {
+			RUN_TIMER_TEST(Timer::GetPPCTimestamp)
+			fprintf(log, "PPC,%.8f,%.8f,%.8f\n", avg_dt, min_dt, max_dt);
 		}
-		stop = Timer::GetPPCTimestamp();
-		stopFPGA = Timer::GetFPGATimestamp();
-		fprintf(log, "vwWorks Clock example=%.8f\n", last);
-		fprintf(log, "elapsed=%.8f (%.8f) each=%.8f max dt=%.8f\n",
-				stop - start, stopFPGA - startFPGA, (stop - start) / (numIterations + 1), max);
+
 		fclose(log);
 	}
 #endif
+	log = 0;
 #if 0
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
