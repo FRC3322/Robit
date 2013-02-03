@@ -38,6 +38,7 @@ public:
 	static Servo* cameraElevation;
 	static Servo* cameraDirection;
 	static DigitalOutput* supportPerfTimer;
+	static DigitalOutput* supportDiagTimer;
 	static Accelerometer* supportAccel;
 	static Gyro* supportGyro;
 	static Compressor* supportCompressor;

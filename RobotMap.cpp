@@ -29,6 +29,7 @@ DoubleSolenoid* RobotMap::gathererDeploy = NULL;
 Servo* RobotMap::cameraElevation = NULL;
 Servo* RobotMap::cameraDirection = NULL;
 DigitalOutput* RobotMap::supportPerfTimer = NULL;
+DigitalOutput* RobotMap::supportDiagTimer = NULL;
 Accelerometer* RobotMap::supportAccel = NULL;
 Gyro* RobotMap::supportGyro = NULL;
 Compressor* RobotMap::supportCompressor = NULL;
@@ -101,13 +102,16 @@ void RobotMap::init() {
 	supportPerfTimer = new DigitalOutput(1, 11);
 	
 	
+	supportDiagTimer = new DigitalOutput(1, 6);
+	
+	
 	supportAccel = new Accelerometer(1, 2);
 	lw->AddSensor("Support", "Accel", supportAccel);
 	supportAccel->SetSensitivity(1.0);
         supportAccel->SetZero(2.5);
 	supportGyro = new Gyro(1, 1);
 	lw->AddSensor("Support", "Gyro", supportGyro);
-	supportGyro->SetSensitivity(0.0070);
+	supportGyro->SetSensitivity(0.007);
 	supportCompressor = new Compressor(1, 5, 1, 1);
 	
 	
