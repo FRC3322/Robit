@@ -28,6 +28,7 @@ CANJaguar* RobotMap::gathererMotor = NULL;
 DoubleSolenoid* RobotMap::gathererDeploy = NULL;
 Servo* RobotMap::cameraElevation = NULL;
 Servo* RobotMap::cameraDirection = NULL;
+DigitalOutput* RobotMap::supportPerfTimer = NULL;
 Accelerometer* RobotMap::supportAccel = NULL;
 Gyro* RobotMap::supportGyro = NULL;
 Compressor* RobotMap::supportCompressor = NULL;
@@ -96,6 +97,9 @@ void RobotMap::init() {
 	
 	cameraDirection = new Servo(1, 2);
 	lw->AddActuator("Camera", "Direction", cameraDirection);
+	
+	supportPerfTimer = new DigitalOutput(1, 11);
+	
 	
 	supportAccel = new Accelerometer(1, 2);
 	lw->AddSensor("Support", "Accel", supportAccel);

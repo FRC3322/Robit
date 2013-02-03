@@ -37,6 +37,7 @@ public:
 	static DoubleSolenoid* gathererDeploy;
 	static Servo* cameraElevation;
 	static Servo* cameraDirection;
+	static DigitalOutput* supportPerfTimer;
 	static Accelerometer* supportAccel;
 	static Gyro* supportGyro;
 	static Compressor* supportCompressor;
