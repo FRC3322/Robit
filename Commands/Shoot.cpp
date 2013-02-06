@@ -26,7 +26,9 @@ void Shoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
-	
+	//Robot::shooter->mainMotor->Set()
+	double speed = 	SmartDashboard::GetNumber("ShooterSpeed");
+	Robot::shooter->mainMotor->Set(speed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
