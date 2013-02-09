@@ -38,3 +38,9 @@ void Drivetrain::ShiftIntoLowGear() {
 void Drivetrain::ShiftIntoHighGear() {
 	shiftGear->Set(DoubleSolenoid::kReverse);
 }
+void Drivetrain::Snapshot(){
+	Robot::diag->MotorSnapShot(2,leftMotorA->GetBusVoltage(),leftMotorA->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(3,leftMotorB->GetBusVoltage(),leftMotorB->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(4,rightMotorA->GetBusVoltage(),rightMotorA->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(5,rightMotorB->GetBusVoltage(),rightMotorB->GetOutputCurrent());
+}

@@ -72,6 +72,7 @@ void Robot::AutonomousPeriodic() {
 #if COLLECT_DIAGNOSTICS
 	double endTime = Timer::GetPPCTimestamp();
 	Robot::diag->Snapshot("A", startTime, endTime);
+	Robot::drivetrain->Snapshot();
 #endif
 }
 
@@ -101,6 +102,7 @@ void Robot::TeleopPeriodic() {
 	double endTime = Timer::GetPPCTimestamp();
 	Robot::support->diagTimer->Set(1);
 	Robot::diag->Snapshot("T", startTime, endTime, gyroAngle);
+	Robot::drivetrain->Snapshot();
 	Robot::support->diagTimer->Set(0);
 #endif
 }

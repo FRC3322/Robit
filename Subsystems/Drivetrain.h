@@ -35,5 +35,6 @@ public:
 	void InitDefaultCommand();
 	void ShiftIntoLowGear();
 	void ShiftIntoHighGear();
+	void Snapshot();
 };
 #endif
