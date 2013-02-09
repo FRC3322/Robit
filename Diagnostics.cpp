@@ -62,9 +62,24 @@ void Diagnostics::Snapshot(char *mode, double start, double end, double gyroAngl
 		// not clear whether new snapshots are more valuable than old -- we could
 		// push older snapshots out of the buffer if the buffer is full.
 
-		int len = sprintf(m_buf + m_buf_len, "%s,%.8f,%.8f,%.8f\n", mode, start, end, gyroAngle);
+		int len = sprintf(m_buf + m_buf_len, "%s,%.8f,%.8f,%.2f\n", mode, start, end, gyroAngle);
 		m_buf_len += len;
 
+		if (m_buf_len > DIAG_SIZE / 2) {
+			// If the buffer is full enough, start flushing.
+			semGive(m_flushing);
+		}
+	}
+}
+void Diagnostics::MotorSnapShot(unsigned int motorNumber, float busVoltage, float outputCurrent)
+{
+	//FIXME copied from Snapshot
+	Synchronized sync(m_writing);
+
+	if (m_buf_len < DIAG_SIZE - DIAG_LINE_SIZE) {
+		int len = sprintf(m_buf + m_buf_len, "m,%d,%.2f,%.2f\n", motorNumber, busVoltage, outputCurrent);
+		m_buf_len += len;
+		
 		if (m_buf_len > DIAG_SIZE / 2) {
 			// If the buffer is full enough, start flushing.
 			semGive(m_flushing);
