@@ -86,3 +86,34 @@ void Diagnostics::MotorSnapShot(unsigned int motorNumber, float busVoltage, floa
 		}
 	}
 }
+/*
+WARNING/NOTE
+The computer I am writing this on does not have windriver installed on it so I had to test the variable args stuff using gcc
+and I just copied the rest. It should work, but until it is tested with windriver keep this commented out. 
+This should fix the FIXME mentioned in the method above.
+
+int Diagnostics::bufferPrintf(const char* format,...)
+{
+	Synchronized sync(m_writing);
+
+	if (m_buf_len < DIAG_SIZE - DIAG_LINE_SIZE) {
+		// The writer must guarantee never to use more than DIAG_LINE_SIZE bytes.
+		// If that amount of buffer space is not available, it means buffer flushing
+		// is lagging behind. Skip writing until the buffer flushes. TODO: it's
+		// not clear whether new snapshots are more valuable than old -- we could
+		// push older snapshots out of the buffer if the buffer is full.
+		va_list args;
+	    va_start (args, format);
+		
+	    int len = vsprintf (m_buf + m_buf_len, format, args);
+	    va_end (args);
+
+		m_buf_len += len;
+
+		if (m_buf_len > DIAG_SIZE / 2) {
+			// If the buffer is full enough, start flushing.
+			semGive(m_flushing);
+		}
+	}
+    return len;
+}*/
