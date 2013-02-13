@@ -75,11 +75,15 @@ void RobotMap::init() {
 	climberEngageClaw = new DoubleSolenoid(1, 3, 4);      
 	
 	
-	shooterMainMotor = new CANJaguar(6);
+	shooterMainMotor = new CANJaguar(6, CANJaguar::kSpeed);
+	shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+	shooterMainMotor->SetPID(0.1, 0, 0);
+	shooterMainMotor->ConfigEncoderCodesPerRev(360);
+	shooterMainMotor->EnableControl();
 	
 	
 	shooterFeedMotor = new CANJaguar(7);
-	
+
 	
 	shooterFrisbeeDirection = new AnalogChannel(1, 3);
 	lw->AddSensor("Shooter", "FrisbeeDirection", shooterFrisbeeDirection);
