@@ -27,8 +27,5 @@ public:
 	// funnel through a single method.
 	void Snapshot(char *mode, double start, double end, double gyroAngle = 0);
 	void MotorSnapShot(unsigned int motorNumber, float busVoltage = 0, float outputCurrent = 0);
-	//int bufferPrintf(const char* format,...);	
-	/*like standard C printf except it uses semaphores and prints to whatever buffer
-		look at note in implementation file before using
-	*/
+	int bufferPrintf(const char* format,...);
 };
