@@ -26,12 +26,13 @@ void StopGather::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void StopGather::Execute() {
+	Robot::gatherer->motor->Set(0);
 	
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool StopGather::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
