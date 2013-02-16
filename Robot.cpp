@@ -82,7 +82,6 @@ void Robot::TeleopPeriodic() {
 	Robot::support->diagTimer->Set(1);
 	Robot::diag->Snapshot("T", startTime, endTime, gyroAngle);
 	Robot::drivetrain->Snapshot();
-	Robot::diag->bufferPrintf("%d test %f %s\n",29,3.1415926,"the test of diagnostics");
 	Robot::support->diagTimer->Set(0);
 #endif
 }

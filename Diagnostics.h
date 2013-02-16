@@ -3,7 +3,7 @@
 #include <stdarg.h>
 #include "Task.h"
 
-#define DIAG_LINE_SIZE 64
+#define DIAG_LINE_SIZE 2048
 #define DIAG_SIZE 32*DIAG_LINE_SIZE
 
 class Diagnostics {
