@@ -23,7 +23,11 @@
  */
 class DriveForward: public Command {
 public:
-	DriveForward();
+	/*const double m_MAX_MAX_SPEED = 10;	//FIXME should
+	const double m_MIN_MAX_SPEED = 6;*/
+	double m_distance;
+	double m_KeepGoingUntilTime;
+	DriveForward(double distance = 0.0); //negative means drive backwards
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

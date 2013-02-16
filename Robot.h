@@ -41,5 +41,6 @@ public:
 	virtual void TestInit();
 	virtual void TestPeriodic();
 	void RunTests();
+	static double DistanceTraveled();
 };
 #endif

@@ -136,3 +136,6 @@ void Robot::RunTests() {
 		fclose(log);
 	}
 }
+double Robot::DistanceTraveled() {
+	return 0; //should be changed FIXME
+}
