@@ -17,7 +17,8 @@ AutonShoot::AutonShoot() {
 }
 // Called just before this Command runs the first time
 void AutonShoot::Initialize() {
-	SetTimeout(4.0);
+	double Shoot_Duration = SmartDashboard::GetNumber("Auton Shoot Duration");
+	SetTimeout(Shoot_Duration);
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonShoot::Execute() {
