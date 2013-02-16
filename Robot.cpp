@@ -137,5 +137,8 @@ void Robot::RunTests() {
 	}
 }
 double Robot::DistanceTraveled() {
-	return 0; //should be changed FIXME
+	return 0; //FIXME should be changed
+}
+double Robot::AngleFacing() {
+	return 0.0;	//FIXME should be change to use gyro and/or encoders 
 }

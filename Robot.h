@@ -18,6 +18,8 @@
 #include <stdio.h>
 class Robot : public IterativeRobot {
 public:
+	static const double MAX_MAX_SPEED = 10;	//FIXME should figure out what these values actually are
+	static const double MIN_MAX_SPEED = 6;	// ft/sec
 	Command *autonomousCommand;
 	static OI *oi;
 	LiveWindow *lw;
@@ -42,5 +44,6 @@ public:
 	virtual void TestPeriodic();
 	void RunTests();
 	static double DistanceTraveled();
+	static double AngleFacing();
 };
 #endif
