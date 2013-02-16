@@ -61,6 +61,8 @@ void Diagnostics::MotorSnapShot(unsigned int motorNumber, float busVoltage, floa
 }
 int Diagnostics::bufferPrintf(const char* format,...)
 {
+	static unsigned int lineNumber = 0;
+	lineNumber++;
 	Synchronized sync(m_writing);
 
 	if (m_buf_len < DIAG_SIZE - DIAG_LINE_SIZE) {
@@ -73,12 +75,15 @@ int Diagnostics::bufferPrintf(const char* format,...)
 		va_list args;
 	    va_start (args, format);
 		
-	    int len = vsprintf (m_buf + m_buf_len, format, args);
-	    va_end (args);
-	  
-	    if(len > 0)	//vsprintf returns -1 if it fails so this is to prevent m_buf_len from being decremented
+	    int len = sprintf (m_buf + m_buf_len,"%.6u ",lineNumber);///print line number
+	    if(len > 0)	//vsprintf returns -1 if it fails. This is to prevent m_buf_len from being decremented
 	    	m_buf_len += len;
-
+	    
+	    len = vsprintf (m_buf + m_buf_len, format, args);	  //now print actual message	  
+	    if(len > 0)
+	    	m_buf_len += len;
+	    
+	    va_end (args);
 		if (m_buf_len > DIAG_SIZE / 2) {
 			// If the buffer is full enough, start flushing.
 			semGive(m_flushing);
