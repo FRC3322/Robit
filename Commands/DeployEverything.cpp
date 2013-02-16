@@ -11,6 +11,10 @@
 
 
 #include "DeployEverything.h"
+#include "../Robot.h"
+#include "DeployGather.h"
+#include "DeployShooter.h"
+
 
 DeployEverything::DeployEverything() {
 	// Add Commands here:
@@ -23,6 +27,8 @@ DeployEverything::DeployEverything() {
 	// e.g. AddParallel(new Command1());
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
+	AddParallel(new DeployGather());
+	AddParallel(new DeployShooter());
 
 	// A command group will require all of the subsystems that each member
 	// would require.

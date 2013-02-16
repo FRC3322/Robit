@@ -24,3 +24,9 @@ void Gatherer::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+void Gatherer::DeployGather() {
+	deploy->Set(DoubleSolenoid::kForward);
+}
+void Gatherer::RetractGather() {
+	deploy->Set(DoubleSolenoid::kReverse);
+}
