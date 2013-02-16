@@ -28,7 +28,6 @@ void Shooter::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
 void Shooter::DeployShooter() {
 	deploy->Set(DoubleSolenoid::kForward);
 }
