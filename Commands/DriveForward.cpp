@@ -1,6 +1,5 @@
 #include "DriveForward.h"
 #include <math.h>
-
 DriveForward::DriveForward(double d, double s) {
 	defaultDistance = d;
 	distance = 0.0;
