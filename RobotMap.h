@@ -31,6 +31,7 @@ public:
 	static DoubleSolenoid* climberEngageClaw;
 	static CANJaguar* shooterMainMotor;
 	static CANJaguar* shooterFeedMotor;
+	static Relay* shooterFlipper;
 	static AnalogChannel* shooterFrisbeeDirection;
 	static DoubleSolenoid* shooterDeploy;
 	static CANJaguar* gathererMotor;
