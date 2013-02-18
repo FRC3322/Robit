@@ -626,6 +626,30 @@ Children:
           name: When to Run
           validators: null
           value: whileHeld
+    - Name: ButtonBack
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id029
+          value: RunFeeder
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id030
+          default: '1'
+          name: Button
+          validators: null
+          value: '7'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: DriveStick}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id031
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whileHeld
     - Name: ButtonY
       Base: Joystick Button
       Children: []
@@ -710,6 +734,14 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: Shoot
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Shooter}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: RunFeeder
     Base: Command
     Children: []
     Properties:
@@ -836,6 +868,6 @@ Properties:
     validators: null, value: 3322}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Team
-      3322\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Ken
+      Fox\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
     validators: null, value: 'C:\Users\Ken Fox\NetBeansProjects'}
