@@ -32,5 +32,6 @@ public:
 	void InitDefaultCommand();
 	void DeployShooter();
 	void RetractShooter();
+	void ToggleDeploy();
 };
 #endif

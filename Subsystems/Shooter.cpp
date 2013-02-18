@@ -35,3 +35,7 @@ void Shooter::DeployShooter() {
 void Shooter::RetractShooter() {
 	deploy->Set(DoubleSolenoid::kForward);
 }
+void Shooter::ToggleDeploy() {
+	DoubleSolenoid::Value setting = (deploy->Get() == DoubleSolenoid::kForward) ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward;
+	deploy->Set(setting);
+}

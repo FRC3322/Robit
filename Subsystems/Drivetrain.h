@@ -35,6 +35,7 @@ public:
 	void InitDefaultCommand();
 	void ShiftIntoLowGear();
 	void ShiftIntoHighGear();
+	void ToggleShiftGears();
 	void Snapshot();
 };
 #endif

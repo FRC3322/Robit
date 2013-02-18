@@ -38,6 +38,10 @@ void Drivetrain::ShiftIntoLowGear() {
 void Drivetrain::ShiftIntoHighGear() {
 	shiftGear->Set(DoubleSolenoid::kReverse);
 }
+void Drivetrain::ToggleShiftGears() {
+	DoubleSolenoid::Value newGear = (shiftGear->Get() == DoubleSolenoid::kForward) ? DoubleSolenoid::kReverse : DoubleSolenoid::kForward;
+	shiftGear->Set(newGear);
+}
 void Drivetrain::Snapshot(){
 	Robot::diag->MotorSnapShot(2,leftMotorA->GetBusVoltage(),leftMotorA->GetOutputCurrent());
 	Robot::diag->MotorSnapShot(3,leftMotorB->GetBusVoltage(),leftMotorB->GetOutputCurrent());
