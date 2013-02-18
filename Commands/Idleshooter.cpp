@@ -22,6 +22,8 @@ void Idleshooter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Idleshooter::Execute() {
 	Robot::shooter->mainMotor->Set(0);
+	Robot::shooter->feedMotor->Set(0);
+	Robot::shooter->flipper->Set(Relay::kOff);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool Idleshooter::IsFinished() {

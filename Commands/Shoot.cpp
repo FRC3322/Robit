@@ -17,17 +17,24 @@ Shoot::Shoot() {
 }
 // Called just before this Command runs the first time
 void Shoot::Initialize() {
-	SetTimeout(0.5);
+	SetTimeout(2.0);
 }
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
-	//Robot::shooter->mainMotor->Set()
 	double speed = 	SmartDashboard::GetNumber("ShooterSpeed");
 	Robot::shooter->mainMotor->Set(speed);
+	if (IsTimedOut()) {
+		double speed = SmartDashboard::GetNumber("FeederSpeed");
+		Robot::shooter->feedMotor->Set(speed);
+		Robot::shooter->flipper->Set(Relay::kReverse);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool Shoot::IsFinished() {
-	return IsTimedOut();
+	// This command is connected to a WhileHeld button. When the button
+	// is released, the command is cancelled and the default subsystem
+	// command activates.
+	return false;
 }
 // Called once after isFinished returns true
 void Shoot::End() {

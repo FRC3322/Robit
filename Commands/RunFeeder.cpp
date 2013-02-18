@@ -17,15 +17,17 @@ RunFeeder::RunFeeder() {
 }
 // Called just before this Command runs the first time
 void RunFeeder::Initialize() {
-	
+	SetTimeout(0.5);
 }
 // Called repeatedly when this Command is scheduled to run
 void RunFeeder::Execute() {
-	
+	double speed = SmartDashboard::GetNumber("FeederSpeed");
+	Robot::shooter->feedMotor->Set(speed);
+	Robot::shooter->flipper->Set(Relay::kReverse);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool RunFeeder::IsFinished() {
-	return false;
+	return IsTimedOut();
 }
 // Called once after isFinished returns true
 void RunFeeder::End() {
