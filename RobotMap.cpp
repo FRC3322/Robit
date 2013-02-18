@@ -74,8 +74,8 @@ void RobotMap::init() {
 	lw->AddActuator("Climber", "SafetyMotor", climberSafetyMotor);
 	
 	climberEngageClaw = new DoubleSolenoid(1, 3, 4);      
-
-    
+	
+	
 	shooterMainMotor = new CANJaguar(6);
 	
 	

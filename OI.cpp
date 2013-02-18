@@ -23,6 +23,7 @@
 #include "Commands/Idleshooter.h"
 #include "Commands/RetractGather.h"
 #include "Commands/RetractShooter.h"
+#include "Commands/RunFeeder.h"
 #include "Commands/RunGather.h"
 #include "Commands/ShiftToHigh.h"
 #include "Commands/ShiftToLow.h"
@@ -40,6 +41,8 @@ OI::OI() {
 	
 	buttonY = new JoystickButton(driveStick, 4);
 	buttonY->WhenPressed(new DeployShooter());
+	buttonBack = new JoystickButton(driveStick, 7);
+	buttonBack->WhileHeld(new RunFeeder());
 	shooterbutton = new JoystickButton(driveStick, 5);
 	shooterbutton->WhileHeld(new Shoot());
 	buttonB = new JoystickButton(driveStick, 2);
@@ -55,6 +58,7 @@ OI::OI() {
 	SmartDashboard::PutData("ShiftToLow", new ShiftToLow());
 	SmartDashboard::PutData("ShiftToHigh", new ShiftToHigh());
 	SmartDashboard::PutData("Shoot", new Shoot());
+	SmartDashboard::PutData("RunFeeder", new RunFeeder());
 	SmartDashboard::PutData("Idleshooter", new Idleshooter());
 	SmartDashboard::PutData("DeployShooter", new DeployShooter());
 	SmartDashboard::PutData("RetractShooter", new RetractShooter());
