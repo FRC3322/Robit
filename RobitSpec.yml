@@ -562,7 +562,7 @@ Children:
           name: Command
           type: Command
           validators: &id029 [TypeDropdownSelected]
-          value: ShiftToLow
+          value: ToggleShift
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id030 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
             '12']
@@ -587,7 +587,7 @@ Children:
           name: Command
           type: Command
           validators: *id029
-          value: ShiftToHigh
+          value: Idleshooter
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id030
           default: '1'
@@ -659,7 +659,7 @@ Children:
           name: Command
           type: Command
           validators: *id029
-          value: DeployShooter
+          value: ToggleShooterDeploy
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id030
           default: '1'
@@ -717,6 +717,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: ToggleShift
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   - Name: ShiftToLow
     Base: Command
     Children: []
@@ -750,6 +758,14 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: Idleshooter
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Shooter}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: ToggleShooterDeploy
     Base: Command
     Children: []
     Properties:
