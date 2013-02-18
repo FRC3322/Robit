@@ -65,6 +65,12 @@ void Robot::TeleopInit() {
 		autonomousCommand->Cancel();
 	RobotMap::supportCompressor->Start();
 	Robot::support->gyro->Reset();
+	Robot::drivetrain->leftEncoder->Reset();
+	Robot::drivetrain->rightEncoder->Reset();
+	double gyroAngle = Robot::support->gyro->GetAngle();
+		SmartDashboard::PutNumber("gyro", gyroAngle);
+		SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRaw());
+		SmartDashboard::PutNumber("rightEncoder", Robot::drivetrain->rightEncoder->GetRaw());
 	double endTime = Timer::GetPPCTimestamp();
 	Robot::diag->Snapshot("TI", startTime, endTime);
 }
@@ -75,6 +81,10 @@ void Robot::TeleopPeriodic() {
 #endif
 	double gyroAngle = Robot::support->gyro->GetAngle();
 	SmartDashboard::PutNumber("gyro", gyroAngle);
+	SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRaw());
+	SmartDashboard::PutNumber("rightEncoder", Robot::drivetrain->rightEncoder->GetRaw());
+	SmartDashboard::PutNumber("distance", (Robot::drivetrain->leftEncoder->GetDistance()+
+										   Robot::drivetrain->rightEncoder->GetDistance()) / 2.0);
 	Scheduler::GetInstance()->Run();
 	Robot::support->perfTimer->Set(0);
 #if COLLECT_DIAGNOSTICS

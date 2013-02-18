@@ -60,14 +60,14 @@ void RobotMap::init() {
 	drivetrainShiftGear = new DoubleSolenoid(1, 1, 2);      
 	
 	
-	drivetrainLeftEncoder = new Encoder(1, 1, 1, 2, false, Encoder::k4X);
+	drivetrainLeftEncoder = new Encoder(1, 1, 1, 2, true, Encoder::k4X);
 	lw->AddSensor("Drivetrain", "LeftEncoder", drivetrainLeftEncoder);
-	drivetrainLeftEncoder->SetDistancePerPulse(1.0);
+	drivetrainLeftEncoder->SetDistancePerPulse(0.0134);
         drivetrainLeftEncoder->SetPIDSourceParameter(Encoder::kRate);
         drivetrainLeftEncoder->Start();
-	drivetrainRightEncoder = new Encoder(1, 3, 1, 4, false, Encoder::k4X);
+	drivetrainRightEncoder = new Encoder(1, 3, 1, 4, true, Encoder::k4X);
 	lw->AddSensor("Drivetrain", "RightEncoder", drivetrainRightEncoder);
-	drivetrainRightEncoder->SetDistancePerPulse(1.0);
+	drivetrainRightEncoder->SetDistancePerPulse(0.01356);
         drivetrainRightEncoder->SetPIDSourceParameter(Encoder::kRate);
         drivetrainRightEncoder->Start();
 	climberSafetyMotor = new Servo(1, 3);
