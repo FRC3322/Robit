@@ -51,7 +51,10 @@ void Diagnostics::Run() {
 		fflush(m_log);
 	}
 }
-
+void Diagnostics::FlushToDisk() {
+	Synchronized sync(m_writing);
+	semGive(m_flushing);
+}
 void Diagnostics::Snapshot(char *mode, double start, double end) {
 	this->bufferPrintf("%s,%.8f,%.8f\n", mode, start, end);
 }

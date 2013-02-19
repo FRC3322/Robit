@@ -23,6 +23,11 @@
  */
 class AutonShoot: public Command {
 public:
+	double shooterSpeed;
+	double feederSpeed;
+	double timeNeededForShooting;
+	double timeNeededToAccelerate;
+	double readyToShootTimestamp;
 	AutonShoot();
 	virtual void Initialize();
 	virtual void Execute();

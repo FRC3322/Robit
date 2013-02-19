@@ -35,6 +35,7 @@ void Robot::DisabledInit() {
 	double startTime = Timer::GetPPCTimestamp();
 	double endTime = Timer::GetPPCTimestamp();
 	Robot::diag->Snapshot("DI", startTime, endTime);
+	Robot::diag->FlushToDisk();
 }
 void Robot::DisabledPeriodic() {
 #if COLLECT_DIAGNOSTICS
@@ -42,7 +43,7 @@ void Robot::DisabledPeriodic() {
 #endif
 #if COLLECT_DIAGNOSTICS
 	double endTime = Timer::GetPPCTimestamp();
-	Robot::diag->Snapshot("D", startTime, endTime);
+	//Robot::diag->Snapshot("D", startTime, endTime);
 #endif
 }
 void Robot::AutonomousInit() {
@@ -159,7 +160,10 @@ double Robot::DistanceTraveled() {
 			Robot::drivetrain->rightEncoder->GetDistance()) / 2.0;
 }
 double Robot::AngleFacing() {
-	if (0) {
+	// FIXME if the gyro is changing too fast (keep track in disabled?)
+	// switch to using encoders. The downside to encoders is they don't
+	// handle slip.
+	if (1) {
 		return Robot::support->gyro->GetAngle();
 	}
 	else {

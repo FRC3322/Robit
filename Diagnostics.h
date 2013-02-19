@@ -23,9 +23,8 @@ public:
 	static void InitTask(Diagnostics *d);
 	void Run();
 
-	// FIXME: need a much more granular API so all the data doesn't
-	// funnel through a single method.
 	void Snapshot(char *mode, double start, double end);
 	void MotorSnapShot(unsigned int motorNumber, float busVoltage = 0, float outputCurrent = 0);
+	void FlushToDisk();
 	int bufferPrintf(const char* format,...);
 };
