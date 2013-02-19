@@ -54,9 +54,9 @@ void RobotMap::init() {
               drivetrainRightMotorA, drivetrainRightMotorB);
 	
 	drivetrainDrive->SetSafetyEnabled(true);
-        drivetrainDrive->SetExpiration(0.5);
+        drivetrainDrive->SetExpiration(4.0);
         drivetrainDrive->SetSensitivity(0.5);
-        drivetrainDrive->SetMaxOutput(1.0);
+        drivetrainDrive->SetMaxOutput(12.0);
 	drivetrainShiftGear = new DoubleSolenoid(1, 1, 2);      
 	
 	
@@ -128,7 +128,6 @@ void RobotMap::init() {
 	drivetrainRightMotorA->EnableControl();
 	drivetrainRightMotorB->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainRightMotorB->EnableControl();
-	drivetrainDrive->SetMaxOutput(12.0);
 	shooterMainMotor->ChangeControlMode(CANJaguar::kSpeed);
     shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 	shooterMainMotor->SetPID(0.1, 0, 0);

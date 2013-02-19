@@ -11,13 +11,10 @@ DriveForward::DriveForward(double d, double s) {
 }
 void DriveForward::Initialize() {
 	Robot::ResetDistanceTraveled();
-
 	distance = (defaultDistance == 0.0) ? SmartDashboard::GetNumber("RobotTravelDistance") : defaultDistance;
 	speed = (defaultSpeed == 0.0) ? fabs(SmartDashboard::GetNumber("Fwd Speed")) : defaultSpeed;
 	if (distance < 0.0) speed = -speed;
-
 	keepGoingUntilTime = distance / (Robot::MAX_MAX_SPEED*speed);
-
 	double timeout = distance / (Robot::MIN_MAX_SPEED*speed);	// time = distance /speed
 	if (timeout > 15.0) timeout = 15.0;							// autonomous is only 15 seconds
 	SetTimeout(timeout);

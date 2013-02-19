@@ -70,7 +70,7 @@ Children:
           validators: [RobotDrive4, ChildDropdownSelected]
           value: Drivetrain RightMotorA
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Maximum Output, validators: null, value: 1.0}
+          name: Maximum Output, validators: null, value: 12.0}
         Right Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
           default: false, name: Right Rear Motor Inverted, validators: null, value: false}
         Left Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
@@ -94,7 +94,7 @@ Children:
           validators: [RobotDrive4, ChildDropdownSelected]
           value: Drivetrain LeftMotorA
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
-          name: Safety Expiration Time, validators: null, value: 0.5}
+          name: Safety Expiration Time, validators: null, value: 4.0}
     - Name: ShiftGear
       Base: Double Solenoid
       Children: []
