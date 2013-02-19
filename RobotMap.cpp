@@ -129,7 +129,6 @@ void RobotMap::init() {
 	drivetrainRightMotorB->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainRightMotorB->EnableControl();
 	drivetrainDrive->SetMaxOutput(12.0);
-
 	shooterMainMotor->ChangeControlMode(CANJaguar::kSpeed);
     shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 	shooterMainMotor->SetPID(0.1, 0, 0);
