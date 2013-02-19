@@ -24,7 +24,7 @@ AutonShoot::AutonShoot() {
 void AutonShoot::Initialize() {
 	shooterSpeed = SmartDashboard::GetNumber("ShooterSpeed");
 	feederSpeed = SmartDashboard::GetNumber("FeederSpeed");
-	timeNeededForShooting = SmartDashboard::GetNumber("Auton Shoot Duration");
+	timeNeededForShooting = SmartDashboard::GetNumber("AutonShootDuration");
 	SetTimeout(timeNeededForShooting);
 	readyToShootTimestamp = Timer::GetPPCTimestamp() + timeNeededToAccelerate;
 }
