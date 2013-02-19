@@ -20,10 +20,10 @@
 AutonShootGatherAllShoot::AutonShootGatherAllShoot() {
 	AddParallel(new DeployGather());
 	AddParallel(new DeployShooter());
-	AddSequential(new DriveForward(12.0, 0.5));
+	AddSequential(new DriveForward(12.0, 0.25));
 	AddSequential(new AutonShoot());
 	AddParallel(new RetractShooter());
-	AddParallel(new DriveForward(36.0, 0.5));
+	AddSequential(new DriveForward(36.0, 0.5));
 	AddParallel(new DeployShooter());
 	AddSequential(new DriveForward(100.0, 0.5));
 	AddSequential(new DriveForward(-136.0, 0.5));

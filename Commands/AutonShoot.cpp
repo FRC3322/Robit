@@ -42,9 +42,12 @@ bool AutonShoot::IsFinished() {
 }
 // Called once after isFinished returns true
 void AutonShoot::End() {
-	
+	Robot::shooter->mainMotor->Set(0);
+	Robot::shooter->feedMotor->Set(0);
+	Robot::shooter->flipper->Set(Relay::kOff);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutonShoot::Interrupted() {
+	End();
 }

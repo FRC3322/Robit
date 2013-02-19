@@ -20,7 +20,7 @@ void DriveForward::Initialize() {
 	SetTimeout(timeout);
 }
 void DriveForward::Execute() {
-	double curve = 5.0 * Robot::AngleFacing() / 90.0;
+	double curve = 1.5 * Robot::AngleFacing() / 90.0;
 	if (speed > 0.0) curve = -curve;
 	Robot::drivetrain->drive->Drive(-speed, curve);	// FIXME replace with PID
 }
