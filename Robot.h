@@ -43,6 +43,7 @@ public:
 	virtual void TestInit();
 	virtual void TestPeriodic();
 	void RunTests();
+	static void ResetDistanceTraveled();
 	static double DistanceTraveled();
 	static double AngleFacing();
 };

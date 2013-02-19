@@ -52,8 +52,8 @@ void Diagnostics::Run() {
 	}
 }
 
-void Diagnostics::Snapshot(char *mode, double start, double end, double gyroAngle) {
-	this->bufferPrintf("%s,%.8f,%.8f,%.2f\n", mode, start, end, gyroAngle);
+void Diagnostics::Snapshot(char *mode, double start, double end) {
+	this->bufferPrintf("%s,%.8f,%.8f\n", mode, start, end);
 }
 void Diagnostics::MotorSnapShot(unsigned int motorNumber, float busVoltage, float outputCurrent)
 {
