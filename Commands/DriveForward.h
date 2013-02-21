@@ -24,6 +24,7 @@ class DriveForward: public Command {
 public:
 	double defaultDistance;
 	double distance;
+	double distanceRemaining;
 	double keepGoingUntilTime;		 //minimum time that robot should drive forward
 	double defaultSpeed;
 	double speed;

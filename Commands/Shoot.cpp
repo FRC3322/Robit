@@ -18,12 +18,20 @@ Shoot::Shoot() {
 // Called just before this Command runs the first time
 void Shoot::Initialize() {
 	SetTimeout(2.0);
+	Robot::shooter->mainMotor->ChangeControlMode(CANJaguar::kSpeed);
+	Robot::shooter->mainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+	Robot::shooter->mainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+	Robot::shooter->mainMotor->ConfigEncoderCodesPerRev(360);
+	Robot::shooter->mainMotor->SetPID(SmartDashboard::GetNumber("P"),
+									  SmartDashboard::GetNumber("I"),
+									  SmartDashboard::GetNumber("D"));
+	Robot::shooter->mainMotor->EnableControl();
 }
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
-	double speed = 	SmartDashboard::GetNumber("ShooterSpeed");
+	double speed = SmartDashboard::GetNumber("ShooterSpeed");
 	Robot::shooter->mainMotor->Set(speed);
-	if (IsTimedOut()) {
+	if (Robot::shooter->shooterSpeed > 500.0 && Robot::shooter->shooterSpeed > speed * 0.9) {
 		double speed = SmartDashboard::GetNumber("FeederSpeed");
 		Robot::shooter->feedMotor->Set(speed);
 		Robot::shooter->flipper->Set(Relay::kReverse);

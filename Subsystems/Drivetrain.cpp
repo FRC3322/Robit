@@ -43,8 +43,8 @@ void Drivetrain::ToggleShiftGears() {
 	shiftGear->Set(newGear);
 }
 void Drivetrain::Snapshot(){
-	Robot::diag->MotorSnapShot(2,leftMotorA->GetBusVoltage(),leftMotorA->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(3,leftMotorB->GetBusVoltage(),leftMotorB->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(4,rightMotorA->GetBusVoltage(),rightMotorA->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(5,rightMotorB->GetBusVoltage(),rightMotorB->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(leftMotorA->m_deviceNumber,leftMotorA->lastReceiveStatus,leftMotorA->GetBusVoltage(),leftMotorA->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(leftMotorB->m_deviceNumber,leftMotorB->lastReceiveStatus,leftMotorB->GetBusVoltage(),leftMotorB->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(rightMotorA->m_deviceNumber,rightMotorA->lastReceiveStatus,rightMotorA->GetBusVoltage(),rightMotorA->GetOutputCurrent());
+	Robot::diag->MotorSnapShot(rightMotorB->m_deviceNumber,rightMotorB->lastReceiveStatus,rightMotorB->GetBusVoltage(),rightMotorB->GetOutputCurrent());
 }

@@ -62,12 +62,12 @@ void RobotMap::init() {
 	
 	drivetrainLeftEncoder = new Encoder(1, 1, 1, 2, true, Encoder::k4X);
 	lw->AddSensor("Drivetrain", "LeftEncoder", drivetrainLeftEncoder);
-	drivetrainLeftEncoder->SetDistancePerPulse(0.0134);
+	drivetrainLeftEncoder->SetDistancePerPulse(0.01263);
         drivetrainLeftEncoder->SetPIDSourceParameter(Encoder::kRate);
         drivetrainLeftEncoder->Start();
 	drivetrainRightEncoder = new Encoder(1, 3, 1, 4, true, Encoder::k4X);
 	lw->AddSensor("Drivetrain", "RightEncoder", drivetrainRightEncoder);
-	drivetrainRightEncoder->SetDistancePerPulse(0.01356);
+	drivetrainRightEncoder->SetDistancePerPulse(0.01263);
         drivetrainRightEncoder->SetPIDSourceParameter(Encoder::kRate);
         drivetrainRightEncoder->Start();
 	climberSafetyMotor = new Servo(1, 3);
@@ -130,6 +130,7 @@ void RobotMap::init() {
 	drivetrainRightMotorB->EnableControl();
 	shooterMainMotor->ChangeControlMode(CANJaguar::kSpeed);
     shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+    shooterMainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
 	shooterMainMotor->SetPID(0.1, 0, 0);
 	shooterMainMotor->ConfigEncoderCodesPerRev(360);
 	shooterMainMotor->EnableControl();

@@ -56,11 +56,11 @@ void Diagnostics::FlushToDisk() {
 	semGive(m_flushing);
 }
 void Diagnostics::Snapshot(char *mode, double start, double end) {
-	this->bufferPrintf("%s,%.8f,%.8f\n", mode, start, end);
+	this->bufferPrintf("%s,%.4f,%.4f\n", mode, start, end);
 }
-void Diagnostics::MotorSnapShot(unsigned int motorNumber, float busVoltage, float outputCurrent)
+void Diagnostics::MotorSnapShot(unsigned int motorNumber, int status, float busVoltage, float outputCurrent)
 {
-	this->bufferPrintf("m,%d,%.2f,%.2f\n", motorNumber, busVoltage, outputCurrent);
+	this->bufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
 }
 int Diagnostics::bufferPrintf(const char* format,...)
 {
@@ -75,19 +75,18 @@ int Diagnostics::bufferPrintf(const char* format,...)
 		// not clear whether new snapshots are more valuable than old -- we could
 		// push older snapshots out of the buffer if the buffer is full.
 		// ***Posible solution could be useing circular buffers
-		va_list args;
-	    va_start (args, format);
-		
-	    int len = sprintf (m_buf + m_buf_len,"%.6u ",lineNumber);///print line number
+
+	    int len = sprintf(m_buf + m_buf_len, "%u ", lineNumber); ///print line number
 	    if(len > 0)	//vsprintf returns -1 if it fails. This is to prevent m_buf_len from being decremented
 	    	m_buf_len += len;
-	    
-	    len = vsprintf (m_buf + m_buf_len, format, args);	  //now print actual message	  
-	    if(len > 0)
-	    	m_buf_len += len;
-	    
-	    va_end (args);
-		if (m_buf_len > DIAG_SIZE / 2) {
+
+	    va_list args;
+	    va_start(args, format);
+	    len = vsprintf(m_buf + m_buf_len, format, args);	  //now print actual message	  
+	    if (len > 0) m_buf_len += len;
+	    va_end(args);
+
+	    if (m_buf_len > DIAG_SIZE / 2) {
 			// If the buffer is full enough, start flushing.
 			semGive(m_flushing);
 		}
