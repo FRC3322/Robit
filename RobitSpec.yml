@@ -433,7 +433,7 @@ Children:
           value: '2'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: MoveCamera}
   - Name: Support
     Base: Subsystem
     Children:
@@ -733,6 +733,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: MoveCamera
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Camera}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
   - Name: ShiftToHigh
     Base: Command
     Children: []
@@ -892,6 +900,6 @@ Properties:
     validators: null, value: 3322}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Ken
-      Fox\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Team
+      3322\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
     validators: null, value: 'C:\Users\Ken Fox\NetBeansProjects'}

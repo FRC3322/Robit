@@ -21,6 +21,7 @@
 #include "Commands/DeployShooter.h"
 #include "Commands/DriveForward.h"
 #include "Commands/Idleshooter.h"
+#include "Commands/MoveCamera.h"
 #include "Commands/ResetDrivetrainMotors.h"
 #include "Commands/RetractGather.h"
 #include "Commands/RetractShooter.h"
