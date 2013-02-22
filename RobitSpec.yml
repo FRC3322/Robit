@@ -676,11 +676,21 @@ Children:
           value: whenPressed
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: ['1', '2', '3', '4']
+        choices: &id032 ['1', '2', '3', '4']
         default: 1
         name: Number
-        validators: [Joystick]
+        validators: &id033 [Joystick]
         value: '1'
+  - Name: TechController
+    Base: Joystick
+    Children: []
+    Properties:
+      Number: !!robotbuilder.data.properties.ChoicesProperty
+        choices: *id032
+        default: 1
+        name: Number
+        validators: *id033
+        value: '2'
   Properties: {}
 - Name: Commands
   Base: Commands
