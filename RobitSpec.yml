@@ -683,7 +683,31 @@ Children:
         value: '1'
   - Name: TechController
     Base: Joystick
-    Children: []
+    Children:
+    - Name: Trigger
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id029
+          value: ZeroCamera
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id030
+          default: '1'
+          name: Button
+          validators: null
+          value: '1'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: TechController}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id031
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whileHeld
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: *id032
@@ -744,6 +768,14 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: MoveCamera
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Camera}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+  - Name: ZeroCamera
     Base: Command
     Children: []
     Properties:
