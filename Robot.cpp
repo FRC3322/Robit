@@ -29,16 +29,25 @@ void Robot::RobotInit() {
 	lw = LiveWindow::GetInstance();
 	diag = new Diagnostics();
 	autonomousCommand = 0;
+	gyroGood = true;
+	driveEncodersGood = true;
 }
 #define COLLECT_DIAGNOSTICS 1
 void Robot::DisabledInit() {
+	Robot::ResetDistanceTraveled();
 	Robot::diag->FlushToDisk();
 }
 void Robot::DisabledPeriodic() {
+	// FIXME Test gyro and encoders to verify they are working.
+	// This can be done during pre-match setup: push the robot
+	// forward and backward a few inches, then turn the robot left
+	// and right a few degrees. A calibration switch on the robot
+	// should be used to enter this verification mode.
 }
 void Robot::AutonomousInit() {
 	double startTime = Timer::GetPPCTimestamp();
 	RobotMap::supportCompressor->Start();
+	Robot::ResetDistanceTraveled();
 	if(autonomousCommand)
 		autonomousCommand->Start();
 	double endTime = Timer::GetPPCTimestamp();
@@ -101,19 +110,16 @@ double Robot::DistanceTraveled() {
 	return dist;
 }
 double Robot::AngleFacing() {
-	// FIXME if the gyro is changing too fast (keep track in disabled?)
-	// switch to using encoders. The downside to encoders is they don't
-	// handle slip.
-	if (0) {
-		return 0.0;
-	}
-	else if (0) {
+	if (Robot::gyroGood) {
 		return Robot::support->gyro->GetAngle();
 	}
-	else {
+	else if (Robot::driveEncodersGood) {
 		const double RobotWidth = 26.0;
 		double rad = (Robot::drivetrain->leftEncoder->GetDistance() -
 					  Robot::drivetrain->rightEncoder->GetDistance()) / RobotWidth;
 		return rad * (180.0 / M_PI);
+	}
+	else {
+		return 0.0;
 	}
 }
