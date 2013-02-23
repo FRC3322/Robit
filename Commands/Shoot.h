@@ -6,8 +6,6 @@
 
 class Shoot: public Command {
 public:
-	bool inSpeedMode;
-	double timeToSwitchToSpeedMode;
 	Shoot();
 	virtual void Initialize();
 	virtual void Execute();
