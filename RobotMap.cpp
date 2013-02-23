@@ -128,10 +128,4 @@ void RobotMap::init() {
 	drivetrainRightMotorA->EnableControl();
 	drivetrainRightMotorB->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainRightMotorB->EnableControl();
-	shooterMainMotor->ChangeControlMode(CANJaguar::kSpeed);
-    shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
-    shooterMainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
-	shooterMainMotor->SetPID(0.1, 0, 0);
-	shooterMainMotor->ConfigEncoderCodesPerRev(360);
-	shooterMainMotor->EnableControl();
 }
