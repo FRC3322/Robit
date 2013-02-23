@@ -167,7 +167,7 @@ double Robot::AngleFacing() {
 	// FIXME if the gyro is changing too fast (keep track in disabled?)
 	// switch to using encoders. The downside to encoders is they don't
 	// handle slip.
-	if (1) {
+	if (0) {
 		return 0.0;
 	}
 	else if (0) {
