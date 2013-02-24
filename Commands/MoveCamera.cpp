@@ -23,7 +23,6 @@ void MoveCamera::Initialize() {
 void MoveCamera::Execute() {
 	Robot::camera->direction->SetAngle(Robot::camera->savedDirection);
 	Robot::camera->elevation->SetAngle(Robot::camera->savedElevation);
-
 }
 // Make this return true when this Command no longer needs to run execute()
 bool MoveCamera::IsFinished() {

@@ -1,9 +1,7 @@
 #ifndef SHOOTER_H
 #define SHOOTER_H
-
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-
 class Shooter: public Subsystem {
 public:
 	double shooterSpeed;
@@ -27,5 +25,4 @@ public:
 	void Snapshot();
 	void MotorSnapshot(CANJaguar *motor);
 };
-
 #endif
