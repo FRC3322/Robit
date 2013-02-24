@@ -57,11 +57,13 @@ void Robot::AutonomousPeriodic() {
 #if COLLECT_DIAGNOSTICS
 	double startTime = Timer::GetPPCTimestamp();
 #endif
+	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
 	Scheduler::GetInstance()->Run();
 #if COLLECT_DIAGNOSTICS
+	Robot::drivetrain->Snapshot();
+	Robot::shooter->Snapshot();
 	double endTime = Timer::GetPPCTimestamp();
 	Snapshot("A", startTime, endTime);
-	Robot::drivetrain->Snapshot();
 #endif
 }
 void Robot::TeleopInit() {
@@ -77,7 +79,12 @@ void Robot::TeleopPeriodic() {
 #if COLLECT_DIAGNOSTICS
 	double startTime = Timer::GetPPCTimestamp();
 #endif
+	// FIXME refactor this into a periodic function that will be called
+	// at the start of each auton and teleop period tick. The same technique
+	// can be used for shooter and drivetrain. It's a good place to verify
+	// and reconfigure the Jaguars.
 	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
+
 	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);
 	SmartDashboard::PutNumber("gyro", Robot::support->gyro->GetAngle());
 	SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRaw());
@@ -87,9 +94,10 @@ void Robot::TeleopPeriodic() {
 	Robot::drivetrain->drive->leftRightAdjust = SmartDashboard::GetNumber("LeftRightAdjust");
 	Scheduler::GetInstance()->Run();
 #if COLLECT_DIAGNOSTICS
+	Robot::drivetrain->Snapshot();
+	Robot::shooter->Snapshot();
 	double endTime = Timer::GetPPCTimestamp();
 	Snapshot("T", startTime, endTime);
-	Robot::drivetrain->Snapshot();
 #endif
 }
 void Robot::TestInit() {

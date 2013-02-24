@@ -24,6 +24,8 @@ public:
 	void StartShooting();
 	void ContinueShooting();
 	void StopShooting();
+	void Snapshot();
+	void MotorSnapshot(CANJaguar *motor);
 };
 
 #endif
