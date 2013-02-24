@@ -1,0 +1,22 @@
+ButtonA - nothing
+ButtonB - nothing
+ShooterButton - shoots while held
+ButtonBack - feeder while held
+ButtonStart - climb (toggle?)
+ButtonY - deploy/undeploy shooter toggle
+ButtonX - deploy/undeploy gatherer toggle
+ButtonL3 - toggle shifters
+
+Tech
+Trigger - while held move camera
+Button4 - move auton command left (pressed)
+Button5 - move auton command right (pressed)
+Button6 - increase auton delay (pressed)
+Button7 - decrease auton delay (pressed)
+Button8 - shooter preset1 (pressed)
+Button9 - shooter preset2 (pressed)
+Button10 - shooter rpm decrease (pressed)
+Button11 - shooter rpm increase (pressed)
+
+only 8-11 and trigger used in teleop
+everything except trigger availible in disabled
