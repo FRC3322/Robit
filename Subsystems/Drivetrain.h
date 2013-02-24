@@ -37,5 +37,6 @@ public:
 	void ShiftIntoHighGear();
 	void ToggleShiftGears();
 	void Snapshot();
+	void MotorSnapshot(CANJaguar *motor);
 };
 #endif

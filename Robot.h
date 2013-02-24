@@ -45,6 +45,7 @@ public:
 	virtual void TestInit();
 	virtual void TestPeriodic();
 
+	void Snapshot(char *mode, double start, double end);
 	static bool gyroGood;
 	static bool driveEncodersGood;
 	static void ResetDistanceTraveled();

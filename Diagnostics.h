@@ -23,8 +23,6 @@ public:
 	static void InitTask(Diagnostics *d);
 	void Run();
 
-	void Snapshot(char *mode, double start, double end);
-	void MotorSnapShot(unsigned int motorNumber, int status, float busVoltage = 0, float outputCurrent = 0);
 	void FlushToDisk();
-	int bufferPrintf(const char* format, ...);
+	int BufferPrintf(const char* format, ...);
 };

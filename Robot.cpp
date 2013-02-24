@@ -51,7 +51,7 @@ void Robot::AutonomousInit() {
 	if(autonomousCommand)
 		autonomousCommand->Start();
 	double endTime = Timer::GetPPCTimestamp();
-	Robot::diag->Snapshot("AI", startTime, endTime);
+	Snapshot("AI", startTime, endTime);
 }
 void Robot::AutonomousPeriodic() {
 #if COLLECT_DIAGNOSTICS
@@ -60,7 +60,7 @@ void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
 #if COLLECT_DIAGNOSTICS
 	double endTime = Timer::GetPPCTimestamp();
-	Robot::diag->Snapshot("A", startTime, endTime);
+	Snapshot("A", startTime, endTime);
 	Robot::drivetrain->Snapshot();
 #endif
 }
@@ -71,7 +71,7 @@ void Robot::TeleopInit() {
 	RobotMap::supportCompressor->Start();
 	Robot::ResetDistanceTraveled();
 	double endTime = Timer::GetPPCTimestamp();
-	Robot::diag->Snapshot("TI", startTime, endTime);
+	Snapshot("TI", startTime, endTime);
 }
 void Robot::TeleopPeriodic() {
 #if COLLECT_DIAGNOSTICS
@@ -88,7 +88,7 @@ void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 #if COLLECT_DIAGNOSTICS
 	double endTime = Timer::GetPPCTimestamp();
-	Robot::diag->Snapshot("T", startTime, endTime);
+	Snapshot("T", startTime, endTime);
 	Robot::drivetrain->Snapshot();
 #endif
 }
@@ -98,6 +98,9 @@ void Robot::TestPeriodic() {
 	lw->Run();
 }
 START_ROBOT_CLASS(Robot);
+void Robot::Snapshot(char *mode, double start, double end) {
+	Robot::diag->BufferPrintf("%s,%.4f,%.4f\n", mode, start, end);
+}
 void Robot::ResetDistanceTraveled() {
 	Robot::support->gyro->Reset();
 	Robot::drivetrain->leftEncoder->Reset();

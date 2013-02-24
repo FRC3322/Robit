@@ -43,8 +43,16 @@ void Drivetrain::ToggleShiftGears() {
 	shiftGear->Set(newGear);
 }
 void Drivetrain::Snapshot(){
-	Robot::diag->MotorSnapShot(leftMotorA->m_deviceNumber,leftMotorA->m_lastReceiveStatus,leftMotorA->GetBusVoltage(),leftMotorA->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(leftMotorB->m_deviceNumber,leftMotorB->m_lastReceiveStatus,leftMotorB->GetBusVoltage(),leftMotorB->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(rightMotorA->m_deviceNumber,rightMotorA->m_lastReceiveStatus,rightMotorA->GetBusVoltage(),rightMotorA->GetOutputCurrent());
-	Robot::diag->MotorSnapShot(rightMotorB->m_deviceNumber,rightMotorB->m_lastReceiveStatus,rightMotorB->GetBusVoltage(),rightMotorB->GetOutputCurrent());
+	MotorSnapshot(leftMotorA);
+	MotorSnapshot(leftMotorB);
+	MotorSnapshot(rightMotorA);
+	MotorSnapshot(rightMotorB);
+}
+void Drivetrain::MotorSnapshot(CANJaguar* motor)
+{
+	int motorNumber = motor->m_deviceNumber;
+	int status = motor->m_lastReceiveStatus;
+	float busVoltage = motor->GetBusVoltage();
+	float outputCurrent = motor->GetOutputCurrent();
+	Robot::diag->BufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
 }
