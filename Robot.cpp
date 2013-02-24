@@ -99,7 +99,8 @@ void Robot::TestPeriodic() {
 }
 START_ROBOT_CLASS(Robot);
 void Robot::Snapshot(char *mode, double start, double end) {
-	Robot::diag->BufferPrintf("%s,%.4f,%.4f\n", mode, start, end);
+	const char *format = (end - start >= 0.018) ? "%s,%.4f,%.4f,SLOW\n" : "%s,%.4f,%.4f\n";
+	Robot::diag->BufferPrintf(format, mode, start, end);
 }
 void Robot::ResetDistanceTraveled() {
 	Robot::support->gyro->Reset();
