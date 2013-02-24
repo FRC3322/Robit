@@ -30,7 +30,7 @@ void Shooter::ToggleDeploy() {
 }
 void Shooter::StartShooting() {
 	inSpeedMode = false;
-	timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 2.0;
+	timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 1.0;
 	// Temporarily set the motor to Voltage mode with a ramp to avoid
 	// current faulting the shooting motor. Once the motor starts moving
 	// it can be switched into speed mode.
@@ -42,7 +42,7 @@ void Shooter::ContinueShooting() {
 	if (inSpeedMode) {
 		double targetShooterSpeed = SmartDashboard::GetNumber("ShooterSpeed");
 		mainMotor->Set(targetShooterSpeed);
-		if (shooterSpeed >= shooterSpeed * 0.9) {
+		if (shooterSpeed >= targetShooterSpeed * 0.9) {
 			// Once the main shooter gets up to 90% of target speed, start
 			// feeding the frisbees.
 			double feederSpeed = SmartDashboard::GetNumber("FeederSpeed");

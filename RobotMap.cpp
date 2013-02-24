@@ -136,6 +136,9 @@ void RobotMap::init() {
 	drivetrainRightMotorB->ConfigFaultTime(0.5);
 	drivetrainRightMotorB->EnableControl();
 
+	// The jumper should be set to coast mode, but just in case, force
+	// the Jaguar into coast. Jumpers are confirmed to work with CAN.
+	shooterMainMotor->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	shooterMainMotor->ConfigFaultTime(0.5);
 	shooterFeedMotor->ConfigFaultTime(0.5);
 }
