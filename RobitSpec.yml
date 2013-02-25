@@ -731,7 +731,7 @@ Children:
           name: Command
           type: Command
           validators: *id029
-          value: ToggleShift
+          value: ShiftToLow
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id030
           default: '1'
@@ -745,7 +745,31 @@ Children:
           default: whileHeld
           name: When to Run
           validators: null
-          value: whenPressed
+          value: whileHeld
+    - Name: ButtonLeft
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id029
+          value: RunGather
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id030
+          default: '1'
+          name: Button
+          validators: null
+          value: '5'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: DriveStick}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id031
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whileHeld
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id032 ['1', '2', '3', '4']
@@ -1031,6 +1055,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: ShiftToHigh
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   - Name: MoveCamera
     Base: Command
     Children: []
@@ -1047,14 +1079,6 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Camera}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
-  - Name: ShiftToHigh
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
   - Name: ResetDrivetrainMotors
     Base: Command
     Children: []
@@ -1063,7 +1087,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Shoot
+  - Name: RunFeeder
     Base: Command
     Children: []
     Properties:
@@ -1071,7 +1095,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Shooter}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: RunFeeder
+  - Name: Shoot
     Base: Command
     Children: []
     Properties:
