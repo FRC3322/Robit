@@ -76,8 +76,10 @@ OI::OI() {
 	trigger->WhileHeld(new MoveCamera());
 	driveStick = new Joystick(1);
 	
+	buttonLeft = new JoystickButton(driveStick, 5);
+	buttonLeft->WhileHeld(new RunGather());
 	buttonL3 = new JoystickButton(driveStick, 9);
-	buttonL3->WhenPressed(new ToggleShift());
+	buttonL3->WhileHeld(new ShiftToLow());
 	buttonY = new JoystickButton(driveStick, 4);
 	buttonY->WhenPressed(new ToggleShooterDeploy());
 	buttonX = new JoystickButton(driveStick, 3);
@@ -102,8 +104,8 @@ OI::OI() {
 	SmartDashboard::PutData("ShiftToLow", new ShiftToLow());
 	SmartDashboard::PutData("ShiftToHigh", new ShiftToHigh());
 	SmartDashboard::PutData("ResetDrivetrainMotors", new ResetDrivetrainMotors());
-	SmartDashboard::PutData("Shoot", new Shoot());
 	SmartDashboard::PutData("RunFeeder", new RunFeeder());
+	SmartDashboard::PutData("Shoot", new Shoot());
 	SmartDashboard::PutData("Idleshooter", new Idleshooter());
 	SmartDashboard::PutData("DeployShooter", new DeployShooter());
 	SmartDashboard::PutData("RetractShooter", new RetractShooter());

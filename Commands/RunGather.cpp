@@ -25,13 +25,14 @@ void RunGather::Execute() {
 }
 // Make this return true when this Command no longer needs to run execute()
 bool RunGather::IsFinished() {
-	return true;
+	return false;
 }
 // Called once after isFinished returns true
 void RunGather::End() {
-	
+	Robot::gatherer->motor->Set(0.0);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RunGather::Interrupted() {
+	End();
 }

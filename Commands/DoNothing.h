@@ -6,7 +6,7 @@
 //this just blocks for specified time (in seconds)
 class DoNothing: public Command {
 public:
-	static double defaultDelay;
+	double defaultDelay;
 	DoNothing(double time = 0.0);
 	virtual void Initialize();
 	virtual void Execute();

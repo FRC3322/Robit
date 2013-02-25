@@ -13,12 +13,14 @@
 #include "AutonShootOnly.h"
 #include "DeployGather.h"
 #include "DeployShooter.h"
+#include "DoNothing.h"
 #include "AutonShoot.h"
 #include "DriveForward.h"
 
 AutonShootOnly::AutonShootOnly() {
 	//AddParallel(new DeployGather());
 	AddSequential(new DeployShooter());
+	AddSequential(new DoNothing());
 	//AddSequential(new DriveForward(12.0, 0.25));
 	AddSequential(new AutonShoot());
 }
