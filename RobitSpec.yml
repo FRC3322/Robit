@@ -542,7 +542,39 @@ Children:
         name: Default Command, type: Command, validators: null, value: None}
   - Name: Cosmetic
     Base: Subsystem
-    Children: []
+    Children:
+    - Name: LED Out Shoot
+      Base: Digital Output
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id025
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id026
+          value: '1'
+        Output Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id027
+          default: '1'
+          name: Output Channel (Digital)
+          validators: *id028
+          value: '6'
+    - Name: LED Out Drive
+      Base: Digital Output
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id025
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id026
+          value: '1'
+        Output Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id027
+          default: '1'
+          name: Output Channel (Digital)
+          validators: *id028
+          value: '7'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -1326,6 +1358,6 @@ Properties:
     validators: null, value: 3322}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Ken
-      Fox\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Team
+      3322\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
     validators: null, value: 'C:\Users\Ken Fox\NetBeansProjects'}
