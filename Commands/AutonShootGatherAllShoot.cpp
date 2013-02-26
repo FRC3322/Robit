@@ -22,6 +22,7 @@
 AutonShootGatherAllShoot::AutonShootGatherAllShoot() {
 	AddParallel(new DeployGather());
 	AddParallel(new DeployShooter());
+	AddSequential(new DoNothing());
 	AddSequential(new DriveForward(12.0, 0.25));
 	AddSequential(new AutonShoot());
 	AddParallel (new RunGather());
