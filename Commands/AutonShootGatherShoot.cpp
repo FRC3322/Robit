@@ -18,6 +18,7 @@
 #include "StopGather.h"
 #include "RetractShooter.h"
 #include "DriveForward.h"
+#include "DoNothing.h"
 
 AutonShootGatherShoot::AutonShootGatherShoot() {
 	AddParallel(new DeployGather());

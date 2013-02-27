@@ -30,20 +30,20 @@ void Shooter::ToggleDeploy() {
 }
 void Shooter::StartShooting() {
 	inSpeedMode = false;
-	timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 1.0;
+	timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 1.25;
 	// Temporarily set the motor to Voltage mode with a ramp to avoid
 	// current faulting the shooting motor. Once the motor starts moving
 	// it can be switched into speed mode.
 	mainMotor->ChangeControlMode(CANJaguar::kVoltage);
-	mainMotor->SetVoltageRampRate(6.0);
+	mainMotor->SetVoltageRampRate(5.0);
 	mainMotor->EnableControl();
 }
 void Shooter::ContinueShooting() {
 	if (inSpeedMode) {
 		double targetShooterSpeed = SmartDashboard::GetNumber("ShooterSpeed");
 		mainMotor->Set(targetShooterSpeed);
-		if (shooterSpeed >= targetShooterSpeed * 0.9) {
-			// Once the main shooter gets up to 90% of target speed, start
+		if (shooterSpeed >= targetShooterSpeed * 0.95) {
+			// Once the main shooter gets up to 95% of target speed, start
 			// feeding the frisbees.
 			double feederSpeed = SmartDashboard::GetNumber("FeederSpeed");
 			feedMotor->Set(feederSpeed);
@@ -64,7 +64,7 @@ void Shooter::ContinueShooting() {
 		mainMotor->Set(targetShooterSpeed);
 	}
 	else {
-		mainMotor->Set(6.0);
+		mainMotor->Set(8.0);
 	}
 }
 void Shooter::StopShooting() {

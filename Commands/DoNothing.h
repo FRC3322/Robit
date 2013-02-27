@@ -7,6 +7,7 @@
 class DoNothing: public Command {
 public:
 	double defaultDelay;
+	double actualDelay;
 	DoNothing(double time = 0.0);
 	virtual void Initialize();
 	virtual void Execute();
