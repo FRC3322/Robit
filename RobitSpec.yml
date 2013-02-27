@@ -351,7 +351,7 @@ Children:
           value: '6'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: Idleshooter}
+        name: Default Command, type: Command, validators: null, value: None}
   - Name: Gatherer
     Base: Subsystem
     Children:
@@ -1135,7 +1135,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Shooter}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Idleshooter
+  - Name: ShootTimed
     Base: Command
     Children: []
     Properties:
@@ -1189,14 +1189,6 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Gatherer}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-  - Name: AutonShoot
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Shooter}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   - Name: RunGather
@@ -1358,6 +1350,6 @@ Properties:
     validators: null, value: 3322}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
-  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Team
-      3322\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
+  Java Project Directory: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Ken
+      Fox\NetBeansProjects', extension: null, folder: true, name: Java Project Directory,
     validators: null, value: 'C:\Users\Ken Fox\NetBeansProjects'}

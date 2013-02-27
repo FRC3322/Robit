@@ -1,12 +1,13 @@
-#ifndef IDLESHOOTER_H
-#define IDLESHOOTER_H
+#ifndef SHOOTTIMED_H
+#define SHOOTTIMED_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class Idleshooter: public Command {
+class ShootTimed: public Command {
 public:
-	Idleshooter();
+	double defaultTimeNeeded;
+	ShootTimed(double timeNeeded = 0.0);
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

@@ -13,7 +13,7 @@
 #include "AutonShootGatherAllShoot.h"
 #include "DeployGather.h"
 #include "DeployShooter.h"
-#include "AutonShoot.h"
+#include "ShootTimed.h"
 #include "RunGather.h"
 #include "StopGather.h"
 #include "RetractShooter.h"
@@ -25,10 +25,10 @@ AutonShootGatherAllShoot::AutonShootGatherAllShoot() {
 	AddParallel(new DeployShooter());
 	AddSequential(new DoNothing());
 	AddSequential(new DriveForward(12.0, 0.25));
-	AddSequential(new AutonShoot());
+	AddSequential(new ShootTimed());
 	AddParallel (new RunGather());
 	AddSequential(new DriveForward(136.0, 0.5));
 	AddSequential(new DriveForward(-136.0, 0.5));
 	AddParallel (new StopGather());
-	AddSequential(new AutonShoot());
+	AddSequential(new ShootTimed());
 }
