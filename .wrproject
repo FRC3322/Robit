@@ -36,7 +36,7 @@
                 <stringAttribute value="$(WIND_BASE)/target/lib/WPILib.a"/>
             </listAttribute>
             <listAttribute key="BLD::Info|Libs|PPC603gnu">
-                <stringAttribute value="c:/WindRiver/workspace/WPILib/PPC603gnu/WPILib/Debug/WPILib.a"/>
+                <stringAttribute value="c:/WindRiver/workspace/WPILib/PPC603gnu/WPILib/NonDebug/WPILib.a"/>
             </listAttribute>
             <listAttribute key="BLD::Info|Macros">
                 <stringAttribute value="VX_CPU_FAMILY"/>
@@ -248,11 +248,6 @@
     </attributes>
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
-            <contents>
-                <folder name="/Robit" recursive="true"/>
-            </contents>
-        </buildtarget>
-        <buildtarget buildtool="Partial Image Linker" name="CommandBassedRobotTemplate_partialImage" passed="true" targetname="CommandBassedRobotTemplate_partialImage">
             <contents>
                 <folder name="/Robit" recursive="true"/>
             </contents>
