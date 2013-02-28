@@ -1,6 +1,7 @@
 #include "../Robot.h"
 #include "Shooter.h"
 #include "../Robotmap.h"
+#include "../Commands/BackgroundShoot.h"
 Shooter::Shooter() : Subsystem("Shooter") {
 	shooterSpeed = 0.0;
 	targetShooterSpeed = 0.0;
