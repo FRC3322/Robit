@@ -15,6 +15,10 @@
 #include "Commands/AutonShootGatherShoot.h"
 #include "Commands/AutonShootGatherShootGatherShoot.h"
 #include "Commands/AutonShootOnly.h"
+#include "Commands/BackgroundDrive.h"
+#include "Commands/BackgroundGather.h"
+#include "Commands/BackgroundHoldCamera.h"
+#include "Commands/BackgroundShoot.h"
 #include "Commands/Climb.h"
 #include "Commands/DecreaseAutonDelay.h"
 #include "Commands/DecreaseShooterRPM.h"
@@ -28,7 +32,6 @@
 #include "Commands/IncreaseShooterRPM.h"
 #include "Commands/MoveAutonLeft.h"
 #include "Commands/MoveAutonRight.h"
-#include "Commands/MoveCamera.h"
 #include "Commands/ResetDrivetrainMotors.h"
 #include "Commands/RetractGather.h"
 #include "Commands/RetractShooter.h"
@@ -41,7 +44,6 @@
 #include "Commands/Shoot.h"
 #include "Commands/ShootTimed.h"
 #include "Commands/StopGather.h"
-#include "Commands/TelOpDrive.h"
 #include "Commands/ToggleGatherDeploy.h"
 #include "Commands/ToggleShift.h"
 #include "Commands/ToggleShooterDeploy.h"
@@ -72,7 +74,7 @@ OI::OI() {
 	button4 = new JoystickButton(techController, 4);
 	button4->WhenPressed(new MoveAutonLeft());
 	trigger = new JoystickButton(techController, 1);
-	trigger->WhileHeld(new MoveCamera());
+	trigger->WhileHeld(new ZeroCamera());
 	driveStick = new Joystick(1);
 	
 	buttonLeft = new JoystickButton(driveStick, 5);
@@ -95,7 +97,6 @@ OI::OI() {
 	buttonA->WhenPressed(new EmptyCommand());
      
         // SmartDashboard Buttons
-	SmartDashboard::PutData("TelOpDrive", new TelOpDrive());
 	SmartDashboard::PutData("DriveForward", new DriveForward());
 	SmartDashboard::PutData("TurnRobotToFace", new TurnRobotToFace());
 	SmartDashboard::PutData("TurnWhileDriving", new TurnWhileDriving());

@@ -1,6 +1,6 @@
 
-#ifndef TELOPDRIVE_H
-#define TELOPDRIVE_H
+#ifndef BACKGROUNDDRIVE_H
+#define BACKGROUNDDRIVE_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@
  *
  * @author ExampleAuthor
  */
-class TelOpDrive: public Command {
+class BackgroundDrive: public Command {
 public:
-	TelOpDrive();
+	BackgroundDrive();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
