@@ -37,9 +37,11 @@ void Drivetrain::Snapshot(){
 }
 void Drivetrain::MotorSnapshot(CANJaguar* motor)
 {
-	int motorNumber = motor->m_deviceNumber;
-	int status = motor->m_lastReceiveStatus;
-	float busVoltage = motor->GetBusVoltage();
-	float outputCurrent = motor->GetOutputCurrent();
-	Robot::diag->BufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
+	if (Robot::diag) {
+		int motorNumber = motor->m_deviceNumber;
+		int status = motor->m_lastReceiveStatus;
+		float busVoltage = motor->GetBusVoltage();
+		float outputCurrent = motor->GetOutputCurrent();
+		Robot::diag->BufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
+	}
 }

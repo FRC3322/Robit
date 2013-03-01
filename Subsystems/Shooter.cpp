@@ -75,16 +75,20 @@ void Shooter::StopShooting() {
 	flipper->Set(Relay::kOff);
 }
 void Shooter::Snapshot() {
-	MotorSnapshot(mainMotor);
-	MotorSnapshot(feedMotor);
-	if (inSpeedMode) {
-		Robot::diag->BufferPrintf("s,%.0f\n", shooterSpeed);
+	if (Robot::diag) {
+		MotorSnapshot(mainMotor);
+		MotorSnapshot(feedMotor);
+		if (inSpeedMode) {
+			Robot::diag->BufferPrintf("s,%.0f\n", shooterSpeed);
+		}
 	}
 }
 void Shooter::MotorSnapshot(CANJaguar* motor) {
-	int motorNumber = motor->m_deviceNumber;
-	int status = motor->m_lastReceiveStatus;
-	float busVoltage = motor->GetBusVoltage();
-	float outputCurrent = motor->GetOutputCurrent();
-	Robot::diag->BufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
+	if (Robot::diag) {
+		int motorNumber = motor->m_deviceNumber;
+		int status = motor->m_lastReceiveStatus;
+		float busVoltage = motor->GetBusVoltage();
+		float outputCurrent = motor->GetOutputCurrent();
+		Robot::diag->BufferPrintf("m,%d,%d,%.2f,%.2f\n", motorNumber, status, busVoltage, outputCurrent);
+	}
 }
