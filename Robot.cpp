@@ -1,4 +1,5 @@
 #include "Robot.h"
+#include "Commands/AutonShootOnly.h"
 #include <math.h>
 #ifndef M_PI
 # define M_PI 3.1415926535
@@ -30,7 +31,7 @@ void Robot::RobotInit() {
 	oi = new OI();
 	lw = LiveWindow::GetInstance();
 	//diag = new Diagnostics();
-	autonomousCommand = 0;
+	autonomousCommand = new AutonShootOnly();
 	gyroGood = true;
 	driveEncodersGood = true;
 }
