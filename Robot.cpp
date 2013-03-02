@@ -53,9 +53,11 @@ void Robot::AutonomousInit() {
 }
 void Robot::AutonomousPeriodic() {
 	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
+	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);
 	Scheduler::GetInstance()->Run();
 }
 void Robot::TeleopInit() {
+	Robot::drivetrain->ShiftIntoHighGear();
 	if (autonomousCommand) autonomousCommand->Cancel();
 	RobotMap::supportCompressor->Start();
 	Robot::ResetDistanceTraveled();

@@ -13,7 +13,7 @@ void BackgroundGather::Execute() {
 	Joystick *stick = Robot::oi->getDriveStick();
 	if(fabs(stick->GetRawAxis(Joystick::kThrottleAxis))>0.5) {
 		double speed = SmartDashboard::GetNumber("GatherSpeed");
-		Robot::gatherer->motor->Set(speed);
+		//Robot::gatherer->motor->Set(speed);
 	}
 	
 }
@@ -23,7 +23,7 @@ bool BackgroundGather::IsFinished() {
 }
 // Called once after isFinished returns true
 void BackgroundGather::End() {
-	Robot::gatherer->motor->Set(0.0);
+	//Robot::gatherer->motor->Set(0.0);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

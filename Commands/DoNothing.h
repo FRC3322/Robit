@@ -6,6 +6,7 @@
 //this just blocks for specified time (in seconds)
 class DoNothing: public Command {
 public:
+	double timeToGo;
 	double defaultDelay;
 	double actualDelay;
 	DoNothing(double time = 0.0);

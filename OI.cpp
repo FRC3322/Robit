@@ -136,7 +136,7 @@ OI::OI() {
 	SmartDashboard::PutNumber("Fwd Speed", 0.5);
 	SmartDashboard::PutNumber("ShooterSpeed", 2250.0);
 	SmartDashboard::PutNumber("RobotTravelDistance", 24.0);
-	SmartDashboard::PutNumber("AutonShootDuration", 4.0);
+	SmartDashboard::PutNumber("AutonShootDuration", 14.0);
 	SmartDashboard::PutNumber("FeederSpeed", 0.5);
 	SmartDashboard::PutNumber("LeftRightAdjust", 0.03);
 	SmartDashboard::PutNumber("Stick Twist", 0.0);

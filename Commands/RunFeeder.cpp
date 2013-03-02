@@ -11,7 +11,7 @@ void RunFeeder::Initialize() {
 void RunFeeder::Execute() {
 	Robot::shooter->mainMotor->Set(0);
 	double speed = SmartDashboard::GetNumber("FeederSpeed");
-	Robot::shooter->feedMotor->Set(speed);
+	Robot::shooter->feedMotor->Set(-speed);
 	Robot::shooter->flipper->Set(Relay::kReverse);
 }
 // Make this return true when this Command no longer needs to run execute()

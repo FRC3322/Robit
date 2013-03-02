@@ -22,7 +22,7 @@ void RunGather::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void RunGather::Execute() {
 	double speed = SmartDashboard::GetNumber("GatherSpeed");
-	Robot::gatherer->motor->Set(speed);
+	//Robot::gatherer->motor->Set(speed);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool RunGather::IsFinished() {
@@ -30,7 +30,7 @@ bool RunGather::IsFinished() {
 }
 // Called once after isFinished returns true
 void RunGather::End() {
-	Robot::gatherer->motor->Set(0.0);
+	//Robot::gatherer->motor->Set(0.0);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

@@ -55,7 +55,7 @@ void RobotMap::init() {
 	drivetrainDrive = new RobotDrive(drivetrainLeftMotorA, drivetrainLeftMotorB,
               drivetrainRightMotorA, drivetrainRightMotorB);
 	
-	drivetrainDrive->SetSafetyEnabled(true);
+	drivetrainDrive->SetSafetyEnabled(false);
         drivetrainDrive->SetExpiration(4.0);
         drivetrainDrive->SetSensitivity(0.5);
         drivetrainDrive->SetMaxOutput(12.0);
@@ -93,7 +93,7 @@ void RobotMap::init() {
 	shooterDeploy = new DoubleSolenoid(1, 5, 6);      
 	
 	
-	gathererMotor = new CANJaguar(8);
+	gathererMotor = 0; //new CANJaguar(8);
 	
 	
 	gathererDeploy = new DoubleSolenoid(1, 7, 8);      
