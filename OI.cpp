@@ -97,19 +97,24 @@ OI::OI() {
 	buttonA->WhenPressed(new EmptyCommand());
      
         // SmartDashboard Buttons
+#if 0		//all this stuff is just clutter on the SmartdashBoard
 	SmartDashboard::PutData("DriveForward", new DriveForward());
 	SmartDashboard::PutData("TurnRobotToFace", new TurnRobotToFace());
 	SmartDashboard::PutData("TurnWhileDriving", new TurnWhileDriving());
 	SmartDashboard::PutData("ToggleShift", new ToggleShift());
 	SmartDashboard::PutData("ShiftToLow", new ShiftToLow());
 	SmartDashboard::PutData("ShiftToHigh", new ShiftToHigh());
+#endif
 	SmartDashboard::PutData("ResetDrivetrainMotors", new ResetDrivetrainMotors());
+#if 0
 	SmartDashboard::PutData("RunFeeder", new RunFeeder());
 	SmartDashboard::PutData("Shoot", new Shoot());
 	SmartDashboard::PutData("ShootTimed", new ShootTimed());
 	SmartDashboard::PutData("DeployShooter", new DeployShooter());
 	SmartDashboard::PutData("RetractShooter", new RetractShooter());
+#endif
 	SmartDashboard::PutData("ToggleShooterDeploy", new ToggleShooterDeploy());
+#if 0
 	SmartDashboard::PutData("RetractGather", new RetractGather());
 	SmartDashboard::PutData("DeployGather", new DeployGather());
 	SmartDashboard::PutData("ToggleGatherDeploy", new ToggleGatherDeploy());
@@ -127,8 +132,10 @@ OI::OI() {
 	SmartDashboard::PutData("MoveAutonRight", new MoveAutonRight());
 	SmartDashboard::PutData("IncreaseAutoDelay", new IncreaseAutoDelay());
 	SmartDashboard::PutData("DecreaseAutonDelay", new DecreaseAutonDelay());
+#endif
 	SmartDashboard::PutData("SetShooterPreset1", new SetShooterPreset1());
 	SmartDashboard::PutData("SetShooterPreset2", new SetShooterPreset2());
+#if 0
 	SmartDashboard::PutData("IncreaseShooterRPM", new IncreaseShooterRPM());
 	SmartDashboard::PutData("DecreaseShooterRPM", new DecreaseShooterRPM());
 	SmartDashboard::PutData("EmptyCommand", new EmptyCommand());
@@ -147,7 +154,7 @@ OI::OI() {
 	SmartDashboard::PutNumber("jaguarRPM", 3322.0);
 	SmartDashboard::PutNumber("Delay", 0.0);
 	SmartDashboard::PutNumber("GatherSpeed", 0.7);
-	
+#endif	
 	LCD = DriverStationLCD::GetInstance();
 	LCD->Printf(DriverStationLCD::kUser_Line1,1,"random variable");
 	LCD->UpdateLCD();
