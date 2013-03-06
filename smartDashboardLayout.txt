@@ -1,0 +1,5 @@
+THINGS TO HAVE ON THE SMARTDASHBOARD
+graph of shooter rpm
+all the setters
+retract/deploy shooter
+reset drive
