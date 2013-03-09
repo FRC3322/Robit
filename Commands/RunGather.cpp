@@ -21,7 +21,9 @@ void RunGather::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void RunGather::Execute() {
+#if 0
 	double speed = SmartDashboard::GetNumber("GatherSpeed");
+#endif
 	//Robot::gatherer->motor->Set(speed);
 }
 // Make this return true when this Command no longer needs to run execute()
