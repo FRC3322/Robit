@@ -110,11 +110,11 @@ OI::OI() {
 	SmartDashboard::PutData("RunFeeder", new RunFeeder());
 	SmartDashboard::PutData("Shoot", new Shoot());
 	SmartDashboard::PutData("ShootTimed", new ShootTimed());
+#endif
 	SmartDashboard::PutData("DeployShooter", new DeployShooter());
 	SmartDashboard::PutData("RetractShooter", new RetractShooter());
-#endif
-	SmartDashboard::PutData("ToggleShooterDeploy", new ToggleShooterDeploy());
 #if 0
+	SmartDashboard::PutData("ToggleShooterDeploy", new ToggleShooterDeploy());
 	SmartDashboard::PutData("RetractGather", new RetractGather());
 	SmartDashboard::PutData("DeployGather", new DeployGather());
 	SmartDashboard::PutData("ToggleGatherDeploy", new ToggleGatherDeploy());
@@ -151,7 +151,9 @@ OI::OI() {
 	SmartDashboard::PutNumber("P", 0.6);
 	SmartDashboard::PutNumber("I", 0.03);
 	SmartDashboard::PutNumber("D", 0.05);
-	SmartDashboard::PutNumber("jaguarRPM", 3322.0);
+#endif
+	SmartDashboard::PutNumber("jaguarRPM", 3322.0);		//graph of jag rpm
+#if 0
 	SmartDashboard::PutNumber("Delay", 0.0);
 	SmartDashboard::PutNumber("GatherSpeed", 0.7);
 #endif	
