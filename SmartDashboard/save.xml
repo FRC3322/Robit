@@ -1,0 +1,175 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="ToggleGatherDeploy" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="286" y="452"/>
+	</widget>
+	<widget field="SetShooterPreset2" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="498" y="452"/>
+	</widget>
+	<widget field="SetShooterPreset1" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="672" y="456"/>
+	</widget>
+	<widget field="MoveAutonRight" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="844" y="392"/>
+	</widget>
+	<widget field="MoveAutonLeft" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="688" y="428"/>
+	</widget>
+	<widget field="IncreaseShooterRPM" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="661" y="393"/>
+	</widget>
+	<widget field="IncreaseAutoDelay" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="749" y="34"/>
+	</widget>
+	<widget field="GatherSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="301"/>
+	</widget>
+	<widget field="EmptyCommand" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="749" y="0"/>
+	</widget>
+	<widget field="DoNothing" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="620" y="0"/>
+	</widget>
+	<widget field="Delay" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="225"/>
+	</widget>
+	<widget field="DecreaseShooterRPM" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="485" y="427"/>
+	</widget>
+	<widget field="DecreaseAutonDelay" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="485" y="393"/>
+	</widget>
+	<widget field="Climb" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="427"/>
+	</widget>
+	<widget field="jaguarRPM" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.LinePlot">
+		<location x="527" y="92"/>
+	</widget>
+	<widget field="distance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="406"/>
+	</widget>
+	<widget field="facing" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="385"/>
+	</widget>
+	<widget field="rightEncoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="364"/>
+	</widget>
+	<widget field="leftEncoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="343"/>
+	</widget>
+	<widget field="gyro" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="322"/>
+	</widget>
+	<widget field="TurnWhileDriving" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="267"/>
+	</widget>
+	<widget field="TurnRobotToFace" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="233"/>
+	</widget>
+	<widget field="ToggleShooterDeploy" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="199"/>
+	</widget>
+	<widget field="ToggleShift" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="165"/>
+	</widget>
+	<widget field="TelOpDrive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="136" y="437"/>
+	</widget>
+	<widget field="StopGather" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="140" y="403"/>
+	</widget>
+	<widget field="Stick Y" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="151" y="382"/>
+	</widget>
+	<widget field="Stick Twist" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="144"/>
+	</widget>
+	<widget field="ShooterSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="123"/>
+	</widget>
+	<widget field="Shoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="144" y="348"/>
+	</widget>
+	<widget field="ShiftToLow" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="150" y="314"/>
+	</widget>
+	<widget field="ShiftToHigh" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="145" y="280"/>
+	</widget>
+	<widget field="RunGather" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="164" y="246"/>
+	</widget>
+	<widget field="RunFeeder" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="158" y="212"/>
+	</widget>
+	<widget field="RobotTravelDistance" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="298" y="102"/>
+	</widget>
+	<widget field="RetractShooter" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="68"/>
+	</widget>
+	<widget field="RetractGather" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="34"/>
+	</widget>
+	<widget field="ResetDrivetrainMotors" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="298" y="0"/>
+	</widget>
+	<widget field="P" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="527" y="6"/>
+		<height>21</height>
+	</widget>
+	<widget field="LeftRightAdjust" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="136" y="0"/>
+	</widget>
+	<widget field="Idleshooter" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="445"/>
+	</widget>
+	<widget field="I" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="529" y="30"/>
+	</widget>
+	<widget field="Fwd Speed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="403"/>
+	</widget>
+	<widget field="FeederSpeed" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="382"/>
+	</widget>
+	<widget field="DriveForward" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="348"/>
+	</widget>
+	<widget field="DeployShooter" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="314"/>
+	</widget>
+	<widget field="DeployGather" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="280"/>
+	</widget>
+	<widget field="DeployEverything" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="246"/>
+	</widget>
+	<widget field="D" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="526" y="55"/>
+	</widget>
+	<widget field="AutonShootOnly" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="191"/>
+	</widget>
+	<widget field="AutonShootGatherShootGatherShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="157"/>
+	</widget>
+	<widget field="AutonShootGatherShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="123"/>
+	</widget>
+	<widget field="AutonShootGatherAllShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="89"/>
+	</widget>
+	<widget field="AutonShootDuration" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="68"/>
+	</widget>
+	<widget field="AutonShootBackupOccupyFrisbees" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="34"/>
+	</widget>
+	<widget field="AutonShoot" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="0"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
