@@ -87,7 +87,7 @@ void Shooter::ContinueShooting() {
 	}
 }
 void Shooter::StopShooting() {
-	mainMotor->Set(500);
+	mainMotor->Set(0);
 	feedMotor->Set(0);
 	flipper->Set(Relay::kOff);
 }
