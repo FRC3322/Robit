@@ -35,7 +35,6 @@ public:
 	static AnalogChannel* shooterFrisbeeDirection;
 	static DoubleSolenoid* shooterDeploy;
 	static CANJaguar* gathererMotor;
-	static DoubleSolenoid* gathererDeploy;
 	static Servo* cameraElevation;
 	static Servo* cameraDirection;
 	static DigitalOutput* supportPerfTimer;

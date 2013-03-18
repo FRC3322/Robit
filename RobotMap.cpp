@@ -26,7 +26,6 @@ Relay* RobotMap::shooterFlipper = NULL;
 AnalogChannel* RobotMap::shooterFrisbeeDirection = NULL;
 DoubleSolenoid* RobotMap::shooterDeploy = NULL;
 CANJaguar* RobotMap::gathererMotor = NULL;
-DoubleSolenoid* RobotMap::gathererDeploy = NULL;
 Servo* RobotMap::cameraElevation = NULL;
 Servo* RobotMap::cameraDirection = NULL;
 DigitalOutput* RobotMap::supportPerfTimer = NULL;
@@ -93,10 +92,7 @@ void RobotMap::init() {
 	shooterDeploy = new DoubleSolenoid(1, 5, 6);      
 	
 	
-	gathererMotor = 0; //new CANJaguar(8);
-	
-	
-	gathererDeploy = new DoubleSolenoid(1, 7, 8);      
+	gathererMotor = new CANJaguar(8);
 	
 	
 	cameraElevation = new Servo(1, 1);
@@ -132,22 +128,18 @@ void RobotMap::init() {
 	drivetrainLeftMotorA->SetVoltageRampRate(48.0);
 	drivetrainLeftMotorA->ConfigFaultTime(0.5);
 	drivetrainLeftMotorA->EnableControl();
-
 	drivetrainLeftMotorB->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainLeftMotorB->SetVoltageRampRate(48.0);
 	drivetrainLeftMotorB->ConfigFaultTime(0.5);
 	drivetrainLeftMotorB->EnableControl();
-
 	drivetrainRightMotorA->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainRightMotorA->SetVoltageRampRate(48.0);
 	drivetrainRightMotorA->ConfigFaultTime(0.5);
 	drivetrainRightMotorA->EnableControl();
-
 	drivetrainRightMotorB->ChangeControlMode(CANJaguar::kVoltage);
 	drivetrainRightMotorB->SetVoltageRampRate(48.0);
 	drivetrainRightMotorB->ConfigFaultTime(0.5);
 	drivetrainRightMotorB->EnableControl();
-
 	shooterMainMotor->ChangeControlMode(CANJaguar::kVoltage);
 	shooterMainMotor->SetVoltageRampRate(5.0);
 	shooterMainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
@@ -158,7 +150,6 @@ void RobotMap::init() {
 	shooterMainMotor->ConfigNeutralMode(CANJaguar::kNeutralMode_Coast);
 	shooterMainMotor->ConfigFaultTime(0.5);
 	shooterMainMotor->EnableControl();
-
 	shooterFeedMotor->SetVoltageRampRate(24.0);
 	shooterFeedMotor->ConfigFaultTime(0.5);
 }
