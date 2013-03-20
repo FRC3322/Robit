@@ -73,9 +73,7 @@ void Shooter::ContinueShooting() {
 		mainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
 		mainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
 		mainMotor->ConfigEncoderCodesPerRev(360);
-		mainMotor->SetPID(SmartDashboard::GetNumber("P"),
-						  SmartDashboard::GetNumber("I"),
-						  SmartDashboard::GetNumber("D"));
+		mainMotor->SetPID(0.6, 0.03, 0.05);
 		mainMotor->EnableControl();
 		inDelayMode = true;
 		timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 4.0;
