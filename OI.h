@@ -23,6 +23,7 @@ private:
 	JoystickButton* button6;
 	JoystickButton* button5;
 	JoystickButton* button4;
+	JoystickButton* button3;
 	JoystickButton* trigger;
 	Joystick* driveStick;
 	JoystickButton* buttonLeft;

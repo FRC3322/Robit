@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef TURNROBOTTOFACE_H
-#define TURNROBOTTOFACE_H
+#ifndef RUNGATHERREVERSE_H
+#define RUNGATHERREVERSE_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class TurnRobotToFace: public Command {
+class RunGatherReverse: public Command {
 public:
-	TurnRobotToFace();
+	RunGatherReverse();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
