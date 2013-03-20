@@ -8,7 +8,7 @@ DoNothing::DoNothing(double time) {
 }
 void DoNothing::Initialize() {
 	//if default delay is not specified then get delay from smart dashboard
-	actualDelay = (defaultDelay > 0.0) ? defaultDelay : SmartDashboard::GetNumber("Delay");
+	actualDelay = (defaultDelay > 0.0) ? defaultDelay : SmartDashboard::GetNumber("AutonDelay");
 	timeToGo = (actualDelay > 0.0) ? Timer::GetPPCTimestamp() + actualDelay : 0.0;
 }
 void DoNothing::Execute() {
