@@ -34,13 +34,32 @@ void Shooter::ToggleDeploy() {
 void Shooter::StartShooting() {
 	inDelayMode = false;
 	inSpeedMode = false;
-	timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 1.25;
-	// Temporarily set the motor to Voltage mode with a ramp to avoid
-	// current faulting the shooting motor. Once the motor starts moving
-	// it can be switched into speed mode.
-	mainMotor->ChangeControlMode(CANJaguar::kVoltage);
-	mainMotor->SetVoltageRampRate(5.0);
-	mainMotor->EnableControl();
+	if (shooterSpeed > 1000) {
+		timeToSwitchToSpeedMode = Timer::GetPPCTimestamp();
+		switchToSpeedMode();
+	}
+	else {
+		timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 1.25;
+		// Temporarily set the motor to Voltage mode with a ramp to avoid
+		// current faulting the shooting motor. Once the motor starts moving
+		// it can be switched into speed mode.
+		mainMotor->ChangeControlMode(CANJaguar::kVoltage);
+		mainMotor->SetVoltageRampRate(5.0);
+		mainMotor->EnableControl();
+	}
+}
+void Shooter::switchToSpeedMode()
+{
+    mainMotor->ChangeControlMode(CANJaguar::kSpeed);
+    mainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
+    mainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
+    mainMotor->ConfigEncoderCodesPerRev(360);
+    mainMotor->SetPID(0.6, 0.03, 0.05);
+    mainMotor->EnableControl();
+    inDelayMode = true;
+    timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 4.0;
+    targetShooterSpeed = SmartDashboard::GetNumber("ShooterSpeed");
+    mainMotor->Set(targetShooterSpeed);
 }
 void Shooter::ContinueShooting() {
 	if (inDelayMode) {
@@ -69,16 +88,7 @@ void Shooter::ContinueShooting() {
 		}
 	}
 	else if (Timer::GetPPCTimestamp() >= timeToSwitchToSpeedMode) {
-		mainMotor->ChangeControlMode(CANJaguar::kSpeed);
-		mainMotor->SetSpeedReference(CANJaguar::kSpeedRef_QuadEncoder);
-		mainMotor->SetPositionReference(CANJaguar::kPosRef_QuadEncoder);
-		mainMotor->ConfigEncoderCodesPerRev(360);
-		mainMotor->SetPID(0.6, 0.03, 0.05);
-		mainMotor->EnableControl();
-		inDelayMode = true;
-		timeToSwitchToSpeedMode = Timer::GetPPCTimestamp() + 4.0;
-		targetShooterSpeed = SmartDashboard::GetNumber("ShooterSpeed");
-		mainMotor->Set(targetShooterSpeed);
+		switchToSpeedMode();
 	}
 	else {
 		mainMotor->Set(8.0);

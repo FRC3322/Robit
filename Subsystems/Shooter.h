@@ -26,5 +26,7 @@ public:
 	void StopShooting();
 	void Snapshot();
 	void MotorSnapshot(CANJaguar *motor);
+private:
+    void switchToSpeedMode();
 };
 #endif
