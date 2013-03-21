@@ -5,11 +5,16 @@ Climb::Climb() {
 }
 void Climb::Initialize() {
 	Robot::climber->engageCount += 1;
+	if (Robot::climber->engageCount >= 2) {
+		if (Robot::climber->engageClaw->Get() == DoubleSolenoid::kReverse) {
+			Robot::climber->engageClaw->Set(DoubleSolenoid::kForward);
+		}
+		else {
+			Robot::climber->engageClaw->Set(DoubleSolenoid::kReverse);
+		}
+	}
 }
 void Climb::Execute() {
-	if (Robot::climber->engageCount >= 2) {
-		Robot::climber->engageClaw->Set(DoubleSolenoid::kReverse);
-	}
 }
 bool Climb::IsFinished() {
 	return false;
