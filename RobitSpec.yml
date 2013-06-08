@@ -244,7 +244,7 @@ Children:
           default: '1'
           name: Forward Channel (Solenoid)
           validators: *id014
-          value: '3'
+          value: '7'
         Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: '1'
@@ -262,7 +262,7 @@ Children:
           default: '1'
           name: Reverse Channel (Solenoid)
           validators: *id020
-          value: '4'
+          value: '8'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
