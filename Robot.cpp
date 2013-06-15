@@ -68,11 +68,17 @@ void Robot::TeleopPeriodic() {
 	// can be used for shooter and drivetrain. It's a good place to verify
 	// and reconfigure the Jaguars.
 	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
-	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);
-#if 0	//clean up smart dashboard	
+	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);	
+	//double v = (Robot::drivetrain->leftEncoder->GetRate()+Robot::drivetrain->rightEncoder->GetRate())/2;
+	double v = (Robot::drivetrain->rightEncoder->GetRate());
+if(fabs(v)>40)
+	Robot::drivetrain->ShiftIntoHighGear();
+else
+	Robot::drivetrain->ShiftIntoLowGear();
+#if 1	//clean up smart dashboard	
 	SmartDashboard::PutNumber("gyro", Robot::support->gyro->GetAngle());
-	SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRaw());
-	SmartDashboard::PutNumber("rightEncoder", Robot::drivetrain->rightEncoder->GetRaw());
+	SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRate());
+	SmartDashboard::PutNumber("rightEncoder", Robot::drivetrain->rightEncoder->GetRate());
 	SmartDashboard::PutNumber("facing", Robot::AngleFacing());
 	SmartDashboard::PutNumber("distance", Robot::DistanceTraveled());
 #endif
