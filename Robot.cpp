@@ -69,11 +69,11 @@ void Robot::TeleopPeriodic() {
 	// and reconfigure the Jaguars.
 	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
 	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);	
-	//double v = (Robot::drivetrain->leftEncoder->GetRate()+Robot::drivetrain->rightEncoder->GetRate())/2;
-	double v = (Robot::drivetrain->rightEncoder->GetRate());
+	double v = (Robot::drivetrain->leftEncoder->GetRate()+Robot::drivetrain->rightEncoder->GetRate())/2;
+	//double v = (Robot::drivetrain->rightEncoder->GetRate());
 if(fabs(v)>40)
 	Robot::drivetrain->ShiftIntoHighGear();
-else
+else if(fabs(v)<20)
 	Robot::drivetrain->ShiftIntoLowGear();
 #if 1	//clean up smart dashboard	
 	SmartDashboard::PutNumber("gyro", Robot::support->gyro->GetAngle());
