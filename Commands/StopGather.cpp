@@ -7,7 +7,9 @@ StopGather::StopGather() {
 void StopGather::Initialize() {
 }
 void StopGather::Execute() {
-	Robot::gatherer->motor->Set(0);
+	if (Robot::gatherer->motor) {
+		Robot::gatherer->motor->Set(0);
+	}
 }
 bool StopGather::IsFinished() {
 	return true;

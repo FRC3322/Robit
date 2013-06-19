@@ -92,7 +92,7 @@ void RobotMap::init() {
 	shooterDeploy = new DoubleSolenoid(1, 5, 6);      
 	
 	
-	gathererMotor = new CANJaguar(8);
+	//gathererMotor = new CANJaguar(8);
 	
 	
 	cameraElevation = new Servo(1, 1);

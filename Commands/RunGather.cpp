@@ -8,13 +8,17 @@ void RunGather::Initialize() {
 }
 void RunGather::Execute() {
 	double speed = SmartDashboard::GetNumber("GatherSpeed");
-	Robot::gatherer->motor->Set(speed);
+	if (Robot::gatherer->motor) {
+		Robot::gatherer->motor->Set(speed);
+	}
 }
 bool RunGather::IsFinished() {
 	return false;
 }
 void RunGather::End() {
-	Robot::gatherer->motor->Set(0.0);
+	if (Robot::gatherer->motor) {
+		Robot::gatherer->motor->Set(0.0);
+	}
 }
 void RunGather::Interrupted() {
 	End();
