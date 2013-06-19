@@ -49,41 +49,28 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	RobotMap::supportCompressor->Start();
 	Robot::ResetDistanceTraveled();
+	Robot::drivetrain->EnableAutomaticShifting(false);
+	Robot::drivetrain->ShiftIntoLowGear();
 	if (autonomousCommand) autonomousCommand->Start();
 }
 void Robot::AutonomousPeriodic() {
-	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
+	Robot::drivetrain->TakeSpeedSample();
+	Robot::shooter->TakeSpeedSample();
 	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);
 	Scheduler::GetInstance()->Run();
 }
 void Robot::TeleopInit() {
-	Robot::drivetrain->ShiftIntoHighGear();
 	if (autonomousCommand) autonomousCommand->Cancel();
 	RobotMap::supportCompressor->Start();
 	Robot::ResetDistanceTraveled();
+	Robot::drivetrain->EnableAutomaticShifting(true);
 }
 void Robot::TeleopPeriodic() {
-	// FIXME refactor this into a periodic function that will be called
-	// at the start of each auton and teleop period tick. The same technique
-	// can be used for shooter and drivetrain. It's a good place to verify
-	// and reconfigure the Jaguars.
-	static double speedHistory[10];
-	static int i = 0;
-	Robot::shooter->shooterSpeed = Robot::shooter->mainMotor->GetSpeed();
-	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);	
-	//double v = (Robot::drivetrain->leftEncoder->GetRate()+Robot::drivetrain->rightEncoder->GetRate())/2;
-	double v = (Robot::drivetrain->rightEncoder->GetRate());
-	speedHistory[i] = v;
-	if (i>=9) i=0; else i++;
-	double averageSpeed = 0;
-	for (int j=0; j<=9; j++)
-	averageSpeed+= speedHistory[j];
-	averageSpeed = averageSpeed/10.0;
-if(fabs(averageSpeed)>40)
-	Robot::drivetrain->ShiftIntoHighGear();
-else if(fabs(averageSpeed)<20)
-	Robot::drivetrain->ShiftIntoLowGear();
-#if 1	//clean up smart dashboard	
+	Robot::drivetrain->TakeSpeedSample();
+	Robot::drivetrain->ShiftAutomatically();
+	Robot::shooter->TakeSpeedSample();
+	SmartDashboard::PutNumber("jaguarRPM", Robot::shooter->shooterSpeed);
+#if 1
 	SmartDashboard::PutNumber("gyro", Robot::support->gyro->GetAngle());
 	SmartDashboard::PutNumber("leftEncoder", Robot::drivetrain->leftEncoder->GetRate());
 	SmartDashboard::PutNumber("rightEncoder", Robot::drivetrain->rightEncoder->GetRate());

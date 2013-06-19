@@ -8,6 +8,7 @@ void ShiftToLow::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ShiftToLow::Execute() {
+	Robot::drivetrain->EnableAutomaticShifting(false);
 	Robot::drivetrain->ShiftIntoLowGear();
 }
 // Make this return true when this Command no longer needs to run execute()
@@ -16,7 +17,8 @@ bool ShiftToLow::IsFinished() {
 }
 // Called once after isFinished returns true
 void ShiftToLow::End() {
-	Robot::drivetrain->ShiftIntoHighGear();
+	Robot::drivetrain->EnableAutomaticShifting(true);
+	Robot::drivetrain->ShiftAutomatically();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
