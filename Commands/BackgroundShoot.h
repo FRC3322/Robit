@@ -22,6 +22,8 @@
  * @author ExampleAuthor
  */
 class BackgroundShoot: public Command {
+private:
+	bool spinning;
 public:
 	BackgroundShoot();
 	virtual void Initialize();

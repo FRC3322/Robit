@@ -7,7 +7,7 @@ ShootTimed::ShootTimed(double timeNeeded) {
 }
 // Called just before this Command runs the first time
 void ShootTimed::Initialize() {
-	Robot::shooter->StartShooting();
+	Robot::shooter->StartSpinning();
 	SetTimeout((defaultTimeNeeded == 0.0) ? SmartDashboard::GetNumber("AutonShootDuration") : defaultTimeNeeded);
 }
 // Called repeatedly when this Command is scheduled to run

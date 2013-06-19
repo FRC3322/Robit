@@ -6,7 +6,7 @@ Shoot::Shoot() {
 }
 // Called just before this Command runs the first time
 void Shoot::Initialize() {
-	Robot::shooter->StartShooting();
+	Robot::shooter->StartSpinning();
 }
 // Called repeatedly when this Command is scheduled to run
 void Shoot::Execute() {
